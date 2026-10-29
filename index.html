@@ -1,358 +1,131 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="google-site-verification" content="cYSUlXjNxDeptlfQOp68Krmrs6LMLz6gGrOu1tdb1Us">
 <title>Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora</title>
-<meta name="description" content="Aimora ile desteklenen oyunlar arasında fare hassasiyetini dönüştür, DPI ve eDPI değerlerini hesapla.">
+<meta name="description" content="Aimora ile oyunlar arasında fare hassasiyetini çevir; DPI ve eDPI değerlerini hesapla. Ücretsiz hassasiyet hesaplayıcı.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://aimora.aimora.workers.dev/">
-<meta name="theme-color" content="#edf0f5">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="tr_TR">
-<meta property="og:site_name" content="Aimora">
-<meta property="og:title" content="Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora">
-<meta property="og:description" content="Desteklenen oyunlar arasında fare hassasiyetini dönüştür; DPI, eDPI ve cm/360 değerlerini hesapla.">
-<meta property="og:url" content="https://aimora.aimora.workers.dev/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora">
-<meta name="twitter:description" content="Desteklenen oyunlar arasında fare hassasiyetini dönüştür; DPI, eDPI ve cm/360 değerlerini hesapla.">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Aimora - Fare Hassasiyet Çevirici / Hesaplayıcı",
-  "url": "https://aimora.aimora.workers.dev/",
-  "description": "Desteklenen oyunlar arasında fare hassasiyeti dönüştürme ve eDPI hesaplama aracı.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "inLanguage": "tr",
-  "browserRequirements": "JavaScript enabled"
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0c111b">
+<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="Aimora">
+<meta property="og:title" content="Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora"><meta property="og:description" content="Oyunlar arasında fare hassasiyetini çevir, DPI ve eDPI hesapla."><meta property="og:url" content="https://aimora.aimora.workers.dev/">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora"><meta name="twitter:description" content="Oyunlar arasında fare hassasiyetini çevir, DPI ve eDPI hesapla.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aimora - Fare Hassasiyet Çevirici / Hesaplayıcı","url":"https://aimora.aimora.workers.dev/","description":"Oyun hassasiyeti, DPI ve eDPI hesaplama aracı.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"tr","browserRequirements":"JavaScript enabled"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  color-scheme: light;
-  --bg:#edf0f5; --card:#ffffff; --ink:#14202e; --mute:#5b6878; --line:#d5dbe5;
-  --accent:#1f4fe0; --accent-ink:#ffffff; --track:#dfe5f0; --ok:#0b7a53;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]):not([data-theme="dark"]){
-    color-scheme: dark;
-    --bg:#0e141d; --card:#172131; --ink:#e8edf5; --mute:#9aa8bb; --line:#2a374b;
-    --accent:#6d93ff; --accent-ink:#0e141d; --track:#223048; --ok:#4cd6a0;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme: dark;
-  --bg:#0e141d; --card:#172131; --ink:#e8edf5; --mute:#9aa8bb; --line:#2a374b;
-  --accent:#6d93ff; --accent-ink:#0e141d; --track:#223048; --ok:#4cd6a0;
-}
-*{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:720px;margin:0 auto;padding:28px 18px 56px}
-h1{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.08;margin:0 0 8px;letter-spacing:-.02em}
-.lead{color:var(--mute);margin:0 0 24px;max-width:56ch}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-.row{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-label{display:block;font-size:14px;color:var(--mute);margin-bottom:6px}
-select,input{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;min-height:44px}
-select:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.swap{min-height:44px;min-width:44px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer;font-size:18px}
-.out{margin-top:18px}
-.big{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:clamp(44px,12vw,72px);line-height:1;letter-spacing:-.03em;color:var(--accent);margin:4px 0 2px;word-break:break-all}
-.cap{color:var(--mute);font-size:15px;margin:0}
-.ruler{margin:22px 0 6px}
-.track{position:relative;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
-.fill{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:7px;transition:width .25s}
-.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);margin-top:6px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
-.stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.stat b{display:block;font-family:"Archivo",system-ui,sans-serif;font-size:20px}
-.stat span{font-size:13px;color:var(--mute)}
-.err{color:#c0392b;font-size:14px;min-height:20px;margin:10px 0 0}
-h2{font-family:"Archivo",system-ui,sans-serif;font-size:22px;margin:34px 0 8px}
-details{border-top:1px solid var(--line);padding:12px 0}
-summary{cursor:pointer;font-weight:600}
-details p{color:var(--mute);margin:8px 0 0}
-footer{color:var(--mute);font-size:13px;margin-top:30px}
-.topbar{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
-.nav-tabs{display:flex;gap:8px;margin:0 0 24px;padding:5px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
-.nav-tabs button{flex:1;border:0;border-radius:8px;background:transparent;color:var(--mute);font:inherit;font-weight:700;padding:10px 12px;cursor:pointer}
-.nav-tabs button[aria-current="page"]{background:var(--accent);color:var(--accent-ink)}
-.tool-btn{border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:8px 10px;cursor:pointer}
-.label-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.label-row label{margin-bottom:6px}
-.reset-btn{padding:5px 8px;margin-bottom:6px}
-.edpi-view[hidden],.sensitivity-view[hidden]{display:none!important}
-.edpi-result{margin-top:18px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
-.edpi-number{font-family:"Archivo",system-ui,sans-serif;font-size:clamp(42px,10vw,64px);font-weight:800;line-height:1.1;color:var(--accent);margin:8px 0}
-.lang-switch{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
-.lang-switch button{border:0;background:transparent;color:var(--mute);font:inherit;font-size:13px;font-weight:700;padding:7px 12px;border-radius:7px;cursor:pointer}
-.lang-switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-@media (max-width:520px){.row{grid-template-columns:1fr}.swap{justify-self:start}.stats{grid-template-columns:1fr}.topbar{justify-content:space-between}.nav-tabs button{font-size:14px;padding:9px 6px}}
+:root{color-scheme:light;--bg:#f4f6fa;--card:#fff;--ink:#172033;--muted:#697386;--line:#e1e6ef;--accent:#315bea;--accent-soft:#edf1ff;--track:#e8ecf4;--shadow:0 12px 36px rgba(25,42,78,.06)}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0c111b;--card:#131c2a;--ink:#eef2fa;--muted:#9ba8bc;--line:#273449;--accent:#8ba5ff;--accent-soft:#202d4a;--track:#263246;--shadow:0 12px 36px rgba(0,0,0,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;transition:background .25s,color .25s}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:2px}
+main{max-width:880px;margin:0 auto;padding:22px 18px 54px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:34px}.brand{font-size:19px;font-weight:800;letter-spacing:-.7px}.brand span{color:var(--accent)}.tools{display:flex;align-items:center;gap:8px}.small-switch{display:flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:9px;background:var(--card)}.small-switch button,.icon-btn{border:0;background:transparent;color:var(--muted);border-radius:6px;padding:5px 8px;font-size:12px;font-weight:700;transition:background .18s,color .18s,transform .18s}.small-switch button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent)}.icon-btn{border:1px solid var(--line);background:var(--card);font-size:15px;width:34px;height:34px;padding:0}.small-switch button:hover,.icon-btn:hover{color:var(--accent);transform:translateY(-1px)}
+.hero{margin-bottom:20px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin:0 0 8px}h1{font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-1.3px;margin:0 0 9px;font-weight:800}.lead{color:var(--muted);font-size:14px;max-width:600px;margin:0}
+.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--line);border-radius:12px;background:var(--card);width:max-content;max-width:100%;margin:24px 0 14px;box-shadow:var(--shadow)}.tab{border:0;border-radius:8px;background:transparent;color:var(--muted);padding:8px 13px;font-size:13px;font-weight:650;transition:background .22s,color .22s,box-shadow .22s,transform .22s;white-space:nowrap}.tab:hover{color:var(--accent)}.tab[aria-selected="true"]{background:var(--accent);color:white;box-shadow:0 3px 10px color-mix(in srgb,var(--accent) 24%,transparent)}.tab:active{transform:scale(.98)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);animation:fade-up .28s ease both;transition:background .25s,border-color .25s,box-shadow .25s}.panel[hidden]{display:none}@keyframes fade-up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.section-label{font-size:11px;text-transform:uppercase;letter-spacing:1.1px;font-weight:750;color:var(--muted);margin:0 0 13px}.game-grid{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:12px;align-items:end}.field label{display:block;font-size:12px;font-weight:650;color:var(--muted);margin-bottom:6px}.field input,.field select{width:100%;min-width:0;height:40px;padding:8px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);transition:border-color .18s,box-shadow .18s,background .25s}.field input:focus,.field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent);outline:0}.swap{height:36px;width:36px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--muted);font-size:17px;transition:transform .2s,color .2s,border-color .2s}.swap:hover{transform:rotate(180deg);color:var(--accent);border-color:var(--accent)}.inputs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}.dpi-line{display:flex;align-items:end;gap:8px;margin-top:14px}.dpi-line .field{flex:1;min-width:0}.reset{height:40px;border:1px solid var(--line);border-radius:8px;padding:0 11px;background:var(--card);color:var(--muted);font-size:12px;font-weight:650;white-space:nowrap;transition:all .18s}.reset:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}.error{color:#dc4545;font-size:12px;min-height:18px;margin:8px 0 0}
+.result{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 18px;margin-top:14px;border:1px solid color-mix(in srgb,var(--accent) 22%,var(--line));background:var(--accent-soft);border-radius:12px;transition:background .25s,border-color .25s}.result-label{font-size:12px;color:var(--muted);font-weight:650}.result-value{font-size:clamp(28px,5vw,38px);line-height:1.1;letter-spacing:-1px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;transition:transform .18s}.result-value.bump{animation:bump .2s ease}@keyframes bump{50%{transform:scale(1.025)}}.result-side{text-align:right}.copy-btn{border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));border-radius:7px;background:var(--card);color:var(--accent);font-size:12px;font-weight:700;padding:7px 10px;margin-top:8px;transition:transform .18s,background .18s}.copy-btn:hover{transform:translateY(-1px)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}.stat{border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-width:0}.stat strong{display:block;font-size:18px;letter-spacing:-.4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.stat span{font-size:11px;color:var(--muted)}.cm-meter{margin-top:14px;padding:15px 16px 13px;border:1px solid var(--line);border-radius:12px;background:var(--card);transition:background .25s,border-color .25s;overflow:hidden}.cm-meter-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.cm-meter-title-wrap{display:flex;align-items:center;gap:9px;min-width:0}.cm-meter-icon{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:9px;background:var(--accent-soft);color:var(--accent);font-size:16px}.cm-meter-title{font-size:12px;font-weight:750;color:var(--ink)}.cm-meter-subtitle{font-size:10px;color:var(--muted);margin-top:2px}.cm-meter-value{font-size:15px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}.cm-ruler{position:relative;padding-top:20px}.cm-ruler-value{position:absolute;top:0;left:0;transform:translateX(-50%);font-size:10px;font-weight:800;color:var(--accent);white-space:nowrap;transition:left .35s ease}.cm-ruler-value:after{content:"";position:absolute;left:50%;top:15px;width:2px;height:13px;background:var(--accent);transform:translateX(-50%);z-index:3}.cm-track{height:13px;border-radius:5px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(5% - 1px),var(--line) calc(5% - 1px),var(--line) 5%),var(--track);position:relative;overflow:visible;border:1px solid var(--line)}.cm-fill{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#74a7ff,var(--accent));transition:width .4s cubic-bezier(.2,.75,.25,1);position:relative}.cm-fill:after{content:"";position:absolute;right:-1px;top:-4px;width:5px;height:19px;border-radius:4px;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.cm-scale{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}.cm-scale span{position:relative}.cm-scale span:not(:first-child):not(:last-child){text-align:center}.cm-meter-foot{display:flex;align-items:flex-start;gap:8px;margin-top:13px;padding-top:11px;border-top:1px solid var(--line);font-size:11px;line-height:1.45;color:var(--muted)}.cm-meter-foot strong{color:var(--ink);font-weight:700}.cm-meter-foot-icon{color:var(--accent);font-size:13px;line-height:1.3}.cm-meter-outside{color:#d97706!important}.cm-meter-outside .cm-fill{background:linear-gradient(90deg,#f59e0b,#d97706)}.result-note{font-size:11px;color:var(--muted);margin:10px 0 0}.edpi-layout{display:grid;grid-template-columns:1fr 1fr;gap:13px}.edpi-result{margin-top:16px}.edpi-result .result{margin-top:0}.info{font-size:12px;color:var(--muted);margin:11px 0 0}.content{margin-top:34px}.content h2{font-size:20px;letter-spacing:-.5px;margin:0 0 12px}.content details{border-top:1px solid var(--line);padding:12px 0}.content summary{font-size:13px;font-weight:650;cursor:pointer}.content details p{color:var(--muted);font-size:13px;margin:8px 0 0}.game-note{margin-top:22px;padding:14px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:12px}footer{margin-top:25px;color:var(--muted);font-size:11px;text-align:center}
+@media(max-width:560px){.cm-meter{padding:12px}.cm-meter-head{align-items:flex-start}.cm-meter-value{font-size:13px}.cm-meter-title{font-size:11px}.cm-meter-subtitle{font-size:9px}.cm-scale{font-size:9px}.cm-meter-foot{font-size:10px}main{padding:16px 13px 38px}.topbar{margin-bottom:26px}.panel{padding:15px;border-radius:13px}.game-grid{grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);gap:7px}.swap{width:32px;height:34px}.field input,.field select{padding:7px 8px;height:39px;font-size:13px}.tabs{width:100%;display:grid;grid-template-columns:1fr 1fr}.tab{padding:8px 7px;font-size:12px}.inputs-grid{gap:9px}.dpi-line{gap:6px}.reset{padding:0 8px;font-size:11px}.stats{gap:7px}.stat{padding:9px 8px}.stat strong{font-size:16px}.stat span{font-size:10px}.result{padding:13px}.result-value{font-size:29px}.edpi-layout{grid-template-columns:1fr}.tools{gap:5px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Custom game picker with persistent favorites */
+.game-picker{position:relative;width:100%}.game-picker select{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;left:0;bottom:0}.game-picker-trigger{width:100%;min-width:0;height:40px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;transition:border-color .18s,box-shadow .18s}.game-picker-trigger:hover,.game-picker.open .game-picker-trigger{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent)}.game-picker-current{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.game-picker-current.is-placeholder{color:var(--muted);font-weight:400}.game-picker-chevron{color:var(--muted);font-size:11px}.game-picker-menu{position:absolute;z-index:30;top:calc(100% + 6px);left:0;right:0;max-height:310px;overflow:auto;padding:6px;border:1px solid var(--line);border-radius:11px;background:var(--card);box-shadow:0 14px 35px #0004;display:none}.game-picker.open .game-picker-menu{display:block;animation:fade-up .15s ease both}.game-picker-search{width:100%;height:34px;padding:7px 10px;margin:0 0 5px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font-size:12px;outline:0;position:sticky;top:-6px;z-index:2}.game-picker-search:focus{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 12%,transparent)}.game-picker-heading{padding:7px 9px 6px;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}.game-picker-option{display:flex;align-items:center;gap:8px;width:100%;padding:8px 9px;border:0;border-radius:7px;background:transparent;color:var(--ink);text-align:left;font-size:12px;transition:background .15s}.game-picker-option:hover,.game-picker-option[aria-selected="true"]{background:var(--accent-soft)}.game-picker-option-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.game-picker-star{flex:0 0 25px;width:25px;height:25px;display:grid;place-items:center;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:18px;line-height:1}.game-picker-star:hover{background:var(--accent-soft);color:var(--accent)}.game-picker-star.is-favorite{color:#f5b942}.game-picker-empty{padding:9px;color:var(--muted);font-size:11px}
+@media(max-width:560px){.game-picker-trigger{height:39px;padding:7px 8px;font-size:12px}.game-picker-menu{max-height:260px}.game-picker-option{padding:8px 6px}}
 </style>
 </head>
 <body>
 <main>
-  <div class="topbar">
-    <button type="button" class="tool-btn" id="theme-toggle" aria-pressed="false">🌙 Karanlık mod</button>
-    <div class="lang-switch" role="group" aria-label="Language / Dil">
-      <button type="button" id="lang-tr" aria-pressed="true">TR</button>
-      <button type="button" id="lang-en" aria-pressed="false">EN</button>
-    </div>
-  </div>
-  <nav class="nav-tabs" aria-label="Hesaplayıcılar">
-    <button type="button" id="tab-sensitivity" aria-current="page">Hassasiyet Hesaplayıcı</button>
-    <button type="button" id="tab-edpi" aria-current="false">eDPI Hesaplayıcı</button>
-  </nav>
-  <section id="sensitivity-view" class="sensitivity-view">
-  <h1>Fare Hassasiyet Çevirici / Hesaplayıcı</h1>
-  <p class="lead">Başka bir oyundaki hassasiyetini Valorant’a (ya da tersine) aynı fare mesafesiyle çevir. Kas hafızan bozulmasın.</p>
-
-  <div class="card">
-    <div class="row">
-      <div><label for="from">Çevrilecek oyun</label>
-        <select id="from"></select></div>
-      <button class="swap" id="swap" aria-label="Oyunları değiştir" type="button">⇄</button>
-      <div><label for="to">Hedef oyun</label>
-        <select id="to"></select></div>
-    </div>
-    <div class="grid2">
-      <div><label for="sens">Oyun içi hassasiyetin</label>
-        <input id="sens" type="number" inputmode="decimal" step="any" min="0" value="1"></div>
-      <div><label for="dpi">Fare DPI</label>
-        <input id="dpi" type="number" inputmode="numeric" step="any" min="0" value="800"></div>
-    </div>
-    <div class="grid2">
-      <div><div class="label-row"><label for="dpi2">Hedefte DPI (aynıysa boş bırak)</label><button type="button" id="reset-converter" class="tool-btn reset-btn">Sıfırla</button></div>
-        <input id="dpi2" type="number" inputmode="numeric" step="any" min="0" placeholder="Aynı"></div>
-    </div>
-    <p class="err" id="err" role="alert"></p>
-
-    <div class="out" aria-live="polite">
-      <p class="cap" id="cap">Hedef oyunda hassasiyetin</p>
-      <p class="big" id="res">–</p>
-      <div class="ruler">
-        <div class="track"><div class="fill" id="fill" style="width:0"></div></div>
-        <div class="ticks"><span>0 cm</span><span>25</span><span>50</span><span>75</span><span>100 cm</span></div>
-      </div>
-      <p class="cap">Çubuk, 360° dönmek için fareyi kaç cm kaydırdığını gösterir.</p>
-      <div class="stats">
-        <div class="stat"><b id="cm">–</b><span>cm / 360°</span></div>
-        <div class="stat"><b id="inch">–</b><span>inç / 360°</span></div>
-        <div class="stat"><b id="edpi">–</b><span>eDPI (hedef)</span></div>
-      </div>
-    </div>
-  </div>
-
-  <h2>Sık sorulanlar</h2>
-  <details><summary>Bu çevirici nasıl çalışıyor?</summary>
-    <p>Her oyunun bir dönüş katsayısı (yaw) var. Valorant’ta 0,07, CS2 ve Apex’te 0,022, Overwatch 2’de 0,0066. Fareyi bir inç kaydırdığında ekranın kaç derece döndüğü, bu katsayı × hassasiyet × DPI ile bulunur. Çevirici, 360° için gereken fare mesafesini iki oyunda da aynı tutar.</p></details>
-  <details><summary>Valorant hassasiyeti CS2’ye nasıl çevrilir?</summary>
-    <p>DPI aynıysa Valorant hassasiyetini yaklaşık 3,18 ile çarp. CS2’den Valorant’a çevirirken 0,314 ile çarp. Bu araç aynı hesabı DPI farkını da katarak yapar.</p></details>
-  <details><summary>eDPI ve cm/360 farkı ne?</summary>
-    <p>eDPI, DPI ile hassasiyetin çarpımıdır ama sadece aynı oyun içinde karşılaştırma için işe yarar. Farklı oyunları karşılaştırmak için cm/360 kullanılır.</p></details>
-  <details><summary>Çevirdikten sonra hâlâ farklı geliyor</summary>
-    <p>Çevirme mesafeyi eşitler, görüş açısı (FOV) ve nişan alma hissi oyunlar arasında farklıdır. Çevirdiğin değeri başlangıç noktası say, birkaç oyun sonra küçük ayar yapman normal.</p></details>
-
-  <footer id="site-footer">Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.</footer>
-  </section>
-
-  <section id="edpi-view" class="edpi-view" hidden>
-    <h1 id="edpi-heading">eDPI Hesaplayıcı</h1>
-    <p class="lead" id="edpi-lead">DPI ve oyun içi hassasiyetini girerek eDPI değerini hesapla. eDPI, DPI × hassasiyet formülüyle hesaplanır.</p>
-    <div class="card">
-      <div class="grid2" style="margin-top:0">
-        <div><label for="edpi-dpi">Fare DPI</label><input id="edpi-dpi" type="number" inputmode="numeric" min="1" step="any" value="800"></div>
-        <div><label for="edpi-sens">Oyun içi hassasiyet</label><input id="edpi-sens" type="number" inputmode="decimal" min="0" step="any" value="1"></div>
-      </div>
-      <p class="err" id="edpi-error" role="alert"></p>
-      <div class="edpi-result" aria-live="polite">
-        <p class="cap" id="edpi-result-label">Hesaplanan eDPI</p>
-        <p class="edpi-number" id="edpi-result">800</p>
-        <p class="cap" id="edpi-formula">eDPI = DPI × hassasiyet</p>
-      </div>
-    </div>
-  </section>
+<header class="topbar"><div class="brand">aimora<span>.</span></div><div class="tools"><div class="small-switch" role="group" aria-label="Language"><button id="lang-tr" type="button" aria-pressed="true">TR</button><button id="lang-en" type="button" aria-pressed="false">EN</button></div><button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme" title="Theme">☾</button></div></header>
+<section class="hero"><p class="eyebrow" id="eyebrow">AIMORA GAMING TOOLS</p><h1 id="page-title">Fare Hassasiyet Çevirici / Hesaplayıcı</h1><p class="lead" id="lead">Oyunlar arasında hassasiyetini dönüştür veya eDPI değerini hızlıca hesapla.</p></section>
+<nav class="tabs" role="tablist" aria-label="Hesaplayıcılar"><button class="tab" id="tab-sens" role="tab" aria-selected="true" aria-controls="panel-sens" type="button">Hassasiyet Hesaplayıcı</button><button class="tab" id="tab-edpi" role="tab" aria-selected="false" aria-controls="panel-edpi" type="button">eDPI Hesaplayıcı</button></nav>
+<section class="panel" id="panel-sens" role="tabpanel" aria-labelledby="tab-sens">
+<p class="section-label" id="convert-label">HASSASİYETİ DÖNÜŞTÜR</p>
+<div class="game-grid"><div class="field"><label id="from-label" for="from">Nereden</label><select id="from"></select></div><button class="swap" id="swap" type="button" aria-label="Oyunları değiştir" title="Oyunları değiştir">⇄</button><div class="field"><label id="to-label" for="to">Nereye</label><select id="to"></select></div></div>
+<div class="inputs-grid"><div class="field"><label id="sens-label" for="sens">Oyun içi hassasiyet</label><input id="sens" type="number" inputmode="decimal" step="any" min="0" value="1"></div><div class="field"><label id="dpi-label" for="dpi">Fare DPI</label><input id="dpi" type="number" inputmode="numeric" step="1" min="1" value="800"></div></div>
+<div class="dpi-line"><div class="field"><label id="dpi2-label" for="dpi2">Hedef DPI</label><input id="dpi2" type="number" inputmode="numeric" step="1" min="1" placeholder="800"></div><button class="reset" id="reset-sens" type="button">↺ <span id="reset-label">Sıfırla</span></button></div>
+<p class="error" id="sens-error" role="alert"></p>
+<div class="result"><div><div class="result-label" id="result-label">Hedef hassasiyet</div><div class="result-value" id="res" aria-live="polite">–</div></div><div class="result-side"><button class="copy-btn" id="copy-sens" type="button">Kopyala</button></div></div>
+<div class="stats"><div class="stat"><strong id="cm">–</strong><span>cm / 360°</span></div><div class="stat"><strong id="inch">–</strong><span id="inch-label">inç / 360°</span></div><div class="stat"><strong id="target-edpi">–</strong><span>eDPI</span></div></div><div class="cm-meter" id="cm-meter" aria-live="polite"><div class="cm-meter-head"><div class="cm-meter-title-wrap"><span class="cm-meter-icon" aria-hidden="true">↻</span><div><div class="cm-meter-title" id="cm-meter-title">360° dönüş için gereken mesafe</div><div class="cm-meter-subtitle" id="cm-meter-subtitle">Fareyi tam tur döndürmek için kaydıracağın mesafe</div></div></div><strong class="cm-meter-value" id="cm-meter-value">– cm</strong></div><div class="cm-ruler"><span class="cm-ruler-value" id="cm-ruler-value">– cm</span><div class="cm-track" role="progressbar" aria-label="360 derece dönüş mesafesi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cm-track"><div class="cm-fill" id="cm-fill"></div></div></div><div class="cm-scale" aria-hidden="true"><span>0 cm</span><span>25 cm</span><span>50 cm</span><span>75 cm</span><span>100 cm</span></div><div class="cm-meter-foot"><span class="cm-meter-foot-icon" aria-hidden="true">ⓘ</span><span id="cm-meter-help">İşaret, hesaplanan mesafeyi cetvel üzerinde gösterir. 100 cm üzerindeki değerler ölçekte sınırda gösterilir.</span></div></div><p class="result-note" id="result-note">Hesaplama 360° dönüş mesafesini eşleştirmeyi hedefler. FOV ve nişan hissi farklılık gösterebilir.</p>
+</section>
+<section class="panel" id="panel-edpi" role="tabpanel" aria-labelledby="tab-edpi" hidden>
+<p class="section-label" id="edpi-section-label">eDPI HESAPLA</p><div class="edpi-layout"><div class="field"><label id="edpi-game-label" for="edpi-game">Oyun</label><select id="edpi-game"></select></div><div class="field"><label id="edpi-sens-label" for="edpi-sens">Oyun içi hassasiyet</label><input id="edpi-sens" type="number" min="0" step="any" inputmode="decimal" value="1"></div><div class="field"><label id="edpi-dpi-label" for="edpi-dpi">Fare DPI</label><input id="edpi-dpi" type="number" min="1" step="1" inputmode="numeric" value="800"></div></div>
+<div class="edpi-result"><div class="result"><div><div class="result-label" id="edpi-result-label">Hesaplanan eDPI</div><div class="result-value" id="edpi-result" aria-live="polite">800</div></div><div class="result-side"><button class="copy-btn" id="copy-edpi" type="button">Kopyala</button></div></div></div><p class="error" id="edpi-error" role="alert"></p><p class="info" id="edpi-info">eDPI = oyun içi hassasiyet × DPI. eDPI en doğru şekilde aynı oyundaki ayarları karşılaştırmak için kullanılır.</p><button class="reset" id="reset-edpi" type="button">↺ <span id="reset-edpi-label">Sıfırla</span></button>
+</section>
+<section class="content"><h2 id="faq-title">Sık sorulanlar</h2><details><summary id="faq1">Hassasiyet çevirici nasıl çalışır?</summary><p id="faq1p">Her oyunun dönüş katsayısı farklıdır. Bu araç, 360° dönüş için gereken fare mesafesini eşleştirmeye çalışır.</p></details><details><summary id="faq2">eDPI nedir?</summary><p id="faq2p">eDPI, oyun içi hassasiyet ile DPI değerinin çarpımıdır. Oyunlar arasında tek başına karşılaştırma yapmak için yeterli değildir.</p></details><details><summary id="faq3">Çevirdiğim hassasiyet neden farklı hissediliyor?</summary><p id="faq3p">FOV, en-boy oranı, animasyonlar ve oyunların giriş sistemleri nişan hissini değiştirebilir. Sonucu başlangıç noktası olarak kullan.</p></details></section>
+<div class="game-note" id="game-note">Şu an desteklenen oyunlar: Valorant, Counter-Strike 2, Apex Legends ve Overwatch 2. Diğer oyunları doğru desteklemek için doğrulanmış dönüş katsayıları eklenmelidir.</div>
+<footer id="footer">Aimora bağımsız bir hayran projesidir; oyun yayıncılarıyla bağlantılı değildir.</footer>
 </main>
-
 <script>
 (function(){
-  var translations = {
-    tr: {
-      title:'Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora',
-      description:'Aimora ile desteklenen oyunlar arasında fare hassasiyetini dönüştür, DPI ve eDPI değerlerini hesapla.',
-      h1:'Fare Hassasiyet Çevirici / Hesaplayıcı',
-      lead:'Desteklenen oyunlar arasında hassasiyetini aynı fare mesafesini koruyarak dönüştür. DPI, eDPI ve cm/360 değerlerini hesapla.',
-      from:'Çevrilecek oyun', to:'Hedef oyun', swap:'Oyunları değiştir', sens:'Oyun içi hassasiyetin', dpi:'Fare DPI', dpi2:'Hedefte DPI (aynıysa boş bırak)', placeholder:'Aynı',
-      cap:'Hedef oyunda hassasiyetin', ruler:'Çubuk, 360° dönmek için fareyi kaç cm kaydırdığını gösterir.',
-      cm:'cm / 360°', inch:'inç / 360°', edpi:'eDPI (hedef)', faq:'Sık sorulanlar',
-      summaries:['Bu çevirici nasıl çalışıyor?','Valorant hassasiyeti CS2’ye nasıl çevrilir?','eDPI ve cm/360 farkı ne?','Çevirdikten sonra hâlâ farklı geliyor'],
-      answers:[
-        'Her oyunun bir dönüş katsayısı (yaw) var. Valorant’ta 0,07, CS2 ve Apex’te 0,022, Overwatch 2’de 0,0066. Fareyi bir inç kaydırdığında ekranın kaç derece döndüğü, bu katsayı × hassasiyet × DPI ile bulunur. Çevirici, 360° için gereken fare mesafesini iki oyunda da aynı tutar.',
-        'DPI aynıysa Valorant hassasiyetini yaklaşık 3,18 ile çarp. CS2’den Valorant’a çevirirken 0,314 ile çarp. Bu araç aynı hesabı DPI farkını da katarak yapar.',
-        'eDPI, DPI ile hassasiyetin çarpımıdır ama sadece aynı oyun içinde karşılaştırma için işe yarar. Farklı oyunları karşılaştırmak için cm/360 kullanılır.',
-        'Çevirme mesafeyi eşitler, görüş açısı (FOV) ve nişan alma hissi oyunlar arasında farklıdır. Çevirdiğin değeri başlangıç noktası say, birkaç oyun sonra küçük ayar yapman normal.'
-      ],
-      footer:'Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.',
-      error:'Hassasiyet ve DPI için 0’dan büyük bir sayı gir.', navSens:'Hassasiyet Hesaplayıcı', navEdpi:'eDPI Hesaplayıcı', reset:'Sıfırla', dark:'Karanlık mod', light:'Aydınlık mod', edpiHeading:'eDPI Hesaplayıcı', edpiLead:'DPI ve oyun içi hassasiyetini girerek eDPI değerini hesapla. eDPI, DPI × hassasiyet formülüyle hesaplanır.', edpiSens:'Oyun içi hassasiyet', edpiResultLabel:'Hesaplanan eDPI', edpiFormula:'eDPI = DPI × hassasiyet', edpiError:'DPI ve hassasiyet için 0’dan büyük bir sayı gir.'
-    },
-    en: {
-      title:'Mouse Sensitivity Converter / Calculator | Aimora',
-      description:'Convert mouse sensitivity between supported games and calculate DPI, eDPI, and cm/360 with Aimora.',
-      h1:'Mouse Sensitivity Converter / Calculator',
-      lead:'Convert sensitivity between supported games while keeping mouse distance consistent. Calculate DPI, eDPI, and cm/360 values.',
-      from:'Convert from', to:'Convert to', swap:'Swap games', sens:'In-game sensitivity', dpi:'Mouse DPI', dpi2:'Target DPI (leave blank if same)', placeholder:'Same',
-      cap:'Sensitivity in target game', ruler:'The bar shows how many centimeters you need to move your mouse for a 360° turn.',
-      cm:'cm / 360°', inch:'in / 360°', edpi:'Target eDPI', faq:'Frequently Asked Questions',
-      summaries:['How does this converter work?','How do I convert Valorant sensitivity to CS2?','What is the difference between eDPI and cm/360?','It still feels different after converting'],
-      answers:[
-        'Each game has a yaw (rotation) coefficient: 0.07 for Valorant, 0.022 for CS2 and Apex, and 0.0066 for Overwatch 2. The rotation in degrees per inch is calculated as coefficient × sensitivity × DPI. This converter keeps the mouse distance required for a 360° turn the same across both games.',
-        'If your DPI is the same, multiply Valorant sensitivity by approximately 3.18 to get CS2 sensitivity. To convert from CS2 to Valorant, multiply by 0.314. This tool also accounts for differences in DPI.',
-        'eDPI is DPI multiplied by sensitivity, and is mainly useful for comparing settings within the same game. Use cm/360 to compare sensitivity across different games.',
-        'The conversion matches physical mouse distance, but field of view (FOV) and aiming feel can differ between games. Treat the converted value as a starting point; making a small adjustment after a few matches is normal.'
-      ],
-      footer:'This is a fan-made page and is not affiliated with Riot Games, Valve, EA, or Blizzard.',
-      error:'Enter a number greater than 0 for sensitivity and DPI.', navSens:'Sensitivity Calculator', navEdpi:'eDPI Calculator', reset:'Reset', dark:'Dark mode', light:'Light mode', edpiHeading:'eDPI Calculator', edpiLead:'Enter your DPI and in-game sensitivity to calculate eDPI. eDPI is calculated as DPI × sensitivity.', edpiSens:'In-game sensitivity', edpiResultLabel:'Calculated eDPI', edpiFormula:'eDPI = DPI × sensitivity', edpiError:'Enter values greater than 0 for DPI and sensitivity.'
-    }
-  };
-  function setLang(lang){
-    var t=translations[lang];
-    window.aimoraLang=lang;
-    document.documentElement.lang=lang;
-    document.title=t.title;
-    document.querySelector('meta[name="description"]').content=t.description;
-    document.querySelector('meta[property="og:locale"]').content=lang==='en'?'en_US':'tr_TR';
-    document.querySelector('meta[property="og:title"]').content=t.title;
-    document.querySelector('meta[property="og:description"]').content=t.description;
-    document.querySelector('meta[name="twitter:title"]').content=t.title;
-    document.querySelector('meta[name="twitter:description"]').content=t.description;
-    document.querySelector('#sensitivity-view h1').textContent=t.h1;
-    document.querySelector('#sensitivity-view .lead').textContent=t.lead;
-    document.getElementById('tab-sensitivity').textContent=t.navSens;
-    document.getElementById('tab-edpi').textContent=t.navEdpi;
-    document.getElementById('reset-converter').textContent=t.reset;
-    document.getElementById('edpi-heading').textContent=t.edpiHeading;
-    document.getElementById('edpi-lead').textContent=t.edpiLead;
-    document.querySelector('label[for="edpi-sens"]').textContent=t.edpiSens;
-    document.getElementById('edpi-result-label').textContent=t.edpiResultLabel;
-    document.getElementById('edpi-formula').textContent=t.edpiFormula;
-    document.getElementById('theme-toggle').textContent=(document.documentElement.dataset.theme==='dark'?'☀️ ':'🌙 ')+(document.documentElement.dataset.theme==='dark'?t.light:t.dark);
-    document.querySelector('label[for="from"]').textContent=t.from;
-    document.querySelector('label[for="to"]').textContent=t.to;
-    document.querySelector('#swap').setAttribute('aria-label',t.swap);
-    document.querySelector('label[for="sens"]').textContent=t.sens;
-    document.querySelector('label[for="dpi"]').textContent=t.dpi;
-    document.querySelector('label[for="dpi2"]').textContent=t.dpi2;
-    document.querySelector('#dpi2').placeholder=t.placeholder;
-    document.querySelector('#cap').textContent=t.cap;
-    document.querySelector('.ruler + .cap').textContent=t.ruler;
-    var statLabels=document.querySelectorAll('.stat span');
-    [t.cm,t.inch,t.edpi].forEach(function(v,i){statLabels[i].textContent=v;});
-    document.querySelector('main > h2').textContent=t.faq;
-    var details=document.querySelectorAll('main > details');
-    details.forEach(function(d,i){d.querySelector('summary').textContent=t.summaries[i];d.querySelector('p').textContent=t.answers[i];});
-    document.querySelector('footer').textContent=t.footer;
-    document.getElementById('lang-tr').setAttribute('aria-pressed',lang==='tr'?'true':'false');
-    document.getElementById('lang-en').setAttribute('aria-pressed',lang==='en'?'true':'false');
-    var schema=document.querySelector('script[type="application/ld+json"]');
-    try { var data=JSON.parse(schema.textContent); data.name=lang==='en'?'Aimora - Mouse Sensitivity Converter / Calculator':'Aimora - Fare Hassasiyet Çevirici / Hesaplayıcı'; data.description=t.description; data.inLanguage=lang; schema.textContent=JSON.stringify(data); } catch(e){}
-    if(window.aimoraRecalc) window.aimoraRecalc();
-  }
-  document.getElementById('lang-tr').addEventListener('click',function(){setLang('tr');});
-  document.getElementById('lang-en').addEventListener('click',function(){setLang('en');});
-  document.getElementById('tab-sensitivity').addEventListener('click',function(){
-    document.getElementById('sensitivity-view').hidden=false; document.getElementById('edpi-view').hidden=true;
-    document.getElementById('tab-sensitivity').setAttribute('aria-current','page'); document.getElementById('tab-edpi').setAttribute('aria-current','false');
-  });
-  document.getElementById('tab-edpi').addEventListener('click',function(){
-    document.getElementById('sensitivity-view').hidden=true; document.getElementById('edpi-view').hidden=false;
-    document.getElementById('tab-sensitivity').setAttribute('aria-current','false'); document.getElementById('tab-edpi').setAttribute('aria-current','page'); calcEdpi();
-  });
-  document.getElementById('theme-toggle').addEventListener('click',function(){
-    var dark=document.documentElement.dataset.theme!=='dark'; document.documentElement.dataset.theme=dark?'dark':'light';
-    this.setAttribute('aria-pressed',dark?'true':'false'); setLang(window.aimoraLang||'tr');
-    document.querySelector('meta[name="theme-color"]').content=dark?'#0e141d':'#edf0f5';
-  });
-  document.getElementById('reset-converter').addEventListener('click',function(){
-    document.getElementById('from').value='cs2'; document.getElementById('to').value='valorant'; document.getElementById('sens').value='1'; document.getElementById('dpi').value='800'; document.getElementById('dpi2').value=''; if(window.aimoraRecalc) window.aimoraRecalc();
-  });
-  function calcEdpi(){
-    var dpi=parseFloat(document.getElementById('edpi-dpi').value), sens=parseFloat(document.getElementById('edpi-sens').value);
-    var err=document.getElementById('edpi-error');
-    if(!(dpi>0)||!(sens>0)){err.textContent=translations[window.aimoraLang||'tr'].edpiError;document.getElementById('edpi-result').textContent='–';return;}
-    err.textContent=''; document.getElementById('edpi-result').textContent=(dpi*sens).toLocaleString(window.aimoraLang==='en'?'en-US':'tr-TR',{maximumFractionDigits:2});
-  }
-  document.getElementById('edpi-dpi').addEventListener('input',calcEdpi);
-  document.getElementById('edpi-sens').addEventListener('input',calcEdpi);
-  window.aimoraSetLang=setLang;
-  setLang('tr');
+ const GAMES={
+ valorant:{tr:'Valorant',en:'Valorant',yaw:0.07},
+ cs2:{tr:'Counter-Strike 2',en:'Counter-Strike 2',yaw:0.022},
+ csgo:{tr:'Counter-Strike: Global Offensive',en:'Counter-Strike: Global Offensive',yaw:0.022},
+ apex:{tr:'Apex Legends',en:'Apex Legends',yaw:0.022},
+ ow2:{tr:'Overwatch 2',en:'Overwatch 2',yaw:0.0066},
+ fortnite:{tr:'Fortnite (X hassasiyeti %)',en:'Fortnite (X sensitivity %)',yaw:0.005555},
+ r6:{tr:'Rainbow Six Siege',en:'Rainbow Six Siege',yaw:0.005729577951},
+ cod:{tr:'Call of Duty / Warzone',en:'Call of Duty / Warzone',yaw:0.0066},
+ destiny2:{tr:'Destiny 2',en:'Destiny 2',yaw:0.0066},
+ tf2:{tr:'Team Fortress 2',en:'Team Fortress 2',yaw:0.022},
+ titanfall2:{tr:'Titanfall 2',en:'Titanfall 2',yaw:0.022},
+ quake:{tr:'Quake Champions',en:'Quake Champions',yaw:0.022},
+ aimlab:{tr:'Aim Lab',en:'Aim Lab',yaw:0.05},
+ kov:{tr:'KovaaK’s',en:'KovaaK’s',yaw:0.022},
+ l4d2:{tr:'Left 4 Dead 2',en:'Left 4 Dead 2',yaw:0.022},
+ doom:{tr:'DOOM Eternal',en:'DOOM Eternal',yaw:0.022},
+ gmod:{tr:'Garry’s Mod',en:'Garry’s Mod',yaw:0.022}
+ };
+ const $=id=>document.getElementById(id);let lang='tr';
+ const T={tr:{title:'Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora',description:'Aimora ile oyunlar arasında fare hassasiyetini çevir; DPI ve eDPI değerlerini hesapla. Ücretsiz hassasiyet hesaplayıcı.',h1:'Fare Hassasiyet Çevirici / Hesaplayıcı',lead:'Oyunlar arasında hassasiyetini dönüştür veya eDPI değerini hızlıca hesapla.',tabSens:'Hassasiyet Hesaplayıcı',tabEdpi:'eDPI Hesaplayıcı',convert:'HASSASİYETİ DÖNÜŞTÜR',from:'Nereden',to:'Nereye',sens:'Oyun içi hassasiyet',dpi:'Fare DPI',dpi2:'Hedef DPI',reset:'Sıfırla',result:'Hedef hassasiyet',copy:'Kopyala',inch:'inç / 360°',cmMeter:'360° dönüş için gereken mesafe',cmMeterSub:'Fareyi tam tur döndürmek için kaydıracağın mesafe',cmMeterHelp:'İşaret, hesaplanan mesafeyi cetvel üzerinde gösterir. 100 cm üzerindeki değerler ölçekte sınırda gösterilir.',note:'Hesaplama 360° dönüş mesafesini eşleştirmeyi hedefler. FOV ve nişan hissi farklılık gösterebilir.',edpiSection:'eDPI HESAPLA',game:'Oyun',edpiResult:'Hesaplanan eDPI',edpiInfo:'eDPI = oyun içi hassasiyet × DPI. eDPI en doğru şekilde aynı oyundaki ayarları karşılaştırmak için kullanılır.',faq:'Sık sorulanlar',faq1:'Hassasiyet çevirici nasıl çalışır?',faq1p:'Her oyunun dönüş katsayısı farklıdır. Bu araç, 360° dönüş için gereken fare mesafesini eşleştirmeye çalışır.',faq2:'eDPI nedir?',faq2p:'eDPI, oyun içi hassasiyet ile DPI değerinin çarpımıdır. Oyunlar arasında tek başına karşılaştırma yapmak için yeterli değildir.',faq3:'Çevirdiğim hassasiyet neden farklı hissediliyor?',faq3p:'FOV, en-boy oranı, animasyonlar ve oyunların giriş sistemleri nişan hissini değiştirebilir. Sonucu başlangıç noktası olarak kullan.',gameNote:'17 oyun ve araç desteklenir. Fortnite için X hassasiyetini yüzde olarak girin. Rainbow Six Siege dönüşümü varsayılan hassasiyet çarpanını varsayar. Sonuçlar genel/hip-fire dönüşümüdür; ADS ve dürbün ayarları dahil değildir.',footer:'Aimora bağımsız bir hayran projesidir; oyun yayıncılarıyla bağlantılı değildir.',error:'Lütfen hassasiyet ve DPI için 0’dan büyük geçerli değerler gir.',edpiError:'Lütfen 0’dan büyük geçerli hassasiyet ve DPI gir.',swap:'Oyunları değiştir',theme:'Temayı değiştir'},en:{title:'Mouse Sensitivity Converter / Calculator | Aimora',description:'Convert mouse sensitivity between games and calculate DPI and eDPI with Aimora. Free sensitivity calculator.',h1:'Mouse Sensitivity Converter / Calculator',lead:'Convert your sensitivity between games or quickly calculate your eDPI.',tabSens:'Sensitivity Converter',tabEdpi:'eDPI Calculator',convert:'CONVERT SENSITIVITY',from:'Convert from',to:'Convert to',sens:'In-game sensitivity',dpi:'Mouse DPI',dpi2:'Target DPI',reset:'Reset',result:'Target sensitivity',copy:'Copy',inch:'in / 360°',cmMeter:'Distance needed for a 360° turn',cmMeterSub:'How far to move the mouse for one full turn',cmMeterHelp:'The marker shows your calculated distance on the ruler. Values above 100 cm are capped at the end of the scale.',note:'The calculation aims to match 360° turn distance. FOV and aiming feel may still differ.',edpiSection:'CALCULATE eDPI',game:'Game',edpiResult:'Calculated eDPI',edpiInfo:'eDPI = in-game sensitivity × DPI. It is most useful for comparing settings within the same game.',faq:'Frequently asked questions',faq1:'How does the sensitivity converter work?',faq1p:'Each game has a different rotation coefficient. This tool aims to match the mouse distance required for a 360° turn.',faq2:'What is eDPI?',faq2p:'eDPI is in-game sensitivity multiplied by DPI. By itself, it is not enough to compare sensitivity across different games.',faq3:'Why does my converted sensitivity feel different?',faq3p:'FOV, aspect ratio, animations and each game’s input system can change how aiming feels. Use the result as a starting point.',gameNote:'17 games and aim tools are supported. Enter Fortnite X sensitivity as a percentage. Rainbow Six Siege assumes its default sensitivity multiplier. Results are for general/hip-fire sensitivity; ADS and scoped settings are not included.',footer:'Aimora is an independent fan project and is not affiliated with game publishers.',error:'Enter valid sensitivity and DPI values greater than 0.',edpiError:'Enter a valid sensitivity and DPI greater than 0.',swap:'Swap games',theme:'Toggle theme'}};
+ function fillGames(select){Object.keys(GAMES).forEach(k=>select.add(new Option(GAMES[k][lang],k)));}
+ const favoriteKey='aimora-favorite-games-v1';
+ let favorites=new Set();
+ try{favorites=new Set(JSON.parse(localStorage.getItem(favoriteKey)||'[]').filter(k=>GAMES[k]));}catch(e){}
+ const pickerBySelect={};
+ function saveFavorites(){try{localStorage.setItem(favoriteKey,JSON.stringify([...favorites]));}catch(e){}}
+ function closePickers(except){document.querySelectorAll('.game-picker.open').forEach(w=>{if(w!==except){w.classList.remove('open');const b=w.querySelector('.game-picker-trigger');if(b)b.setAttribute('aria-expanded','false');}});}
+ function makePicker(select){
+   if(select.dataset.pickerReady)return;select.dataset.pickerReady='1';
+   const wrap=document.createElement('div');wrap.className='game-picker';select.parentNode.insertBefore(wrap,select);wrap.appendChild(select);
+   const trigger=document.createElement('button');trigger.type='button';trigger.className='game-picker-trigger';trigger.setAttribute('aria-haspopup','listbox');trigger.setAttribute('aria-expanded','false');
+   const current=document.createElement('span');current.className='game-picker-current';const chevron=document.createElement('span');chevron.className='game-picker-chevron';chevron.textContent='▾';trigger.append(current,chevron);
+   const menu=document.createElement('div');menu.className='game-picker-menu';menu.setAttribute('role','listbox');const search=document.createElement('input');search.type='search';search.className='game-picker-search';search.placeholder=lang==='tr'?'Oyun ara…':'Search games…';search.setAttribute('aria-label',search.placeholder);menu.appendChild(search);wrap.append(trigger,menu);pickerBySelect[select.id]={select,wrap,trigger,current,menu,search};search.addEventListener('input',()=>renderPicker(select.id));search.addEventListener('keydown',e=>{if(e.key==='Escape'){closePickers();trigger.focus();}if(e.key==='Enter'){const first=menu.querySelector('.game-picker-option-name');if(first)first.click();}});
+   trigger.addEventListener('click',()=>{const open=!wrap.classList.contains('open');closePickers(wrap);wrap.classList.toggle('open',open);trigger.setAttribute('aria-expanded',String(open));if(open){renderPicker(select.id);pFocus(select.id);}});
+   select.addEventListener('change',()=>{select.dataset.userPicked='1';updatePickerLabel(select.id);renderPicker(select.id);});
+   renderPicker(select.id);updatePickerLabel(select.id);
+ }
+ function pFocus(id){const p=pickerBySelect[id];if(p){p.search.value='';p.search.placeholder=lang==='tr'?'Oyun ara…':'Search games…';p.search.focus();}}
+ function updatePickerLabel(id){const p=pickerBySelect[id];if(!p)return;const option=p.select.options[p.select.selectedIndex];if(!p.select.dataset.userPicked){p.current.textContent=lang==='tr'?'Valorant veya CS2 ara…':'Search Valorant or CS2…';p.current.classList.add('is-placeholder');}else{p.current.textContent=option?option.text:'';p.current.classList.remove('is-placeholder');}}
+ function renderPicker(id){
+   const p=pickerBySelect[id];if(!p)return;const menu=p.menu,searchHadFocus=document.activeElement===p.search,caret=p.search.selectionStart;menu.replaceChildren(p.search);
+   const query=(p.search.value||'').trim().toLocaleLowerCase(lang==='tr'?'tr':'en');
+   const sortByName=arr=>arr.sort((a,b)=>GAMES[a][lang].localeCompare(GAMES[b][lang],lang==='tr'?'tr':'en',{sensitivity:'base'}));
+   let all=sortByName(Object.keys(GAMES).filter(k=>GAMES[k][lang].toLocaleLowerCase(lang==='tr'?'tr':'en').includes(query)));
+   const favs=all.filter(k=>favorites.has(k)),others=all.filter(k=>!favorites.has(k));
+   if(favs.length){const favHeading=document.createElement('div');favHeading.className='game-picker-heading';favHeading.textContent=lang==='tr'?'★ FAVORİLER':'★ FAVORITES';menu.appendChild(favHeading);favs.forEach(k=>menu.appendChild(makeGameOption(p,k)));}
+   if(others.length){if(!query||favs.length){const allHeading=document.createElement('div');allHeading.className='game-picker-heading';allHeading.textContent=query?(lang==='tr'?'DİĞER SONUÇLAR':'OTHER RESULTS'):(lang==='tr'?'TÜM OYUNLAR':'ALL GAMES');menu.appendChild(allHeading);}others.forEach(k=>menu.appendChild(makeGameOption(p,k)));}
+   if(!favs.length&&!others.length){const empty=document.createElement('div');empty.className='game-picker-empty';empty.textContent=lang==='tr'?'Oyun bulunamadı':'No games found';menu.appendChild(empty);}if(searchHadFocus){p.search.focus();try{p.search.setSelectionRange(caret,caret);}catch(e){}}
+ }
+ function makeGameOption(p,key){const row=document.createElement('div');row.className='game-picker-option';row.setAttribute('role','option');row.setAttribute('aria-selected',String(p.select.value===key));const name=document.createElement('span');name.className='game-picker-option-name';name.textContent=GAMES[key][lang];name.title=GAMES[key][lang];name.addEventListener('click',()=>{p.select.value=key;p.select.dispatchEvent(new Event('change',{bubbles:true}));p.wrap.classList.remove('open');p.trigger.setAttribute('aria-expanded','false');});const star=document.createElement('button');star.type='button';star.className='game-picker-star'+(favorites.has(key)?' is-favorite':'');star.textContent=favorites.has(key)?'★':'☆';star.title=favorites.has(key)?(lang==='tr'?'Favorilerden çıkar':'Remove from favorites'):(lang==='tr'?'Favorilere ekle':'Add to favorites');star.setAttribute('aria-label',star.title);star.addEventListener('click',e=>{e.stopPropagation();if(favorites.has(key))favorites.delete(key);else favorites.add(key);saveFavorites();document.querySelectorAll('.game-picker').forEach(w=>{const sel=w.querySelector('select');if(sel)renderPicker(sel.id);});});row.append(name,star);row.addEventListener('click',e=>{if(e.target===row){p.select.value=key;p.select.dispatchEvent(new Event('change',{bubbles:true}));p.wrap.classList.remove('open');p.trigger.setAttribute('aria-expanded','false');}});return row;}
+ ['from','to','edpi-game'].forEach(id=>makePicker($(id)));
+ document.addEventListener('click',e=>{if(!e.target.closest('.game-picker'))closePickers();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePickers();});
+ fillGames($('from'));fillGames($('to'));fillGames($('edpi-game'));$('from').value='cs2';$('to').value='valorant';
+ function fmt(n,d=2){if(!Number.isFinite(n))return '–';return n.toFixed(d).replace('.',lang==='tr'?',':'.');}
+ function bump(el){el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');}
+ function calc(){const f=GAMES[$('from').value],t=GAMES[$('to').value],s=Number($('sens').value),dpi=Number($('dpi').value),raw=$('dpi2').value,dpi2=raw.trim()===''?dpi:Number(raw);if(!(s>0&&dpi>0&&dpi2>0&&f&&t)){ $('sens-error').textContent=T[lang].error;['res','cm','inch','target-edpi','cm-meter-value'].forEach(id=>$(id).textContent='–');$('cm-fill').style.width='0%';$('cm-ruler-value').textContent='– cm';$('cm-ruler-value').style.left='4%';$('cm-meter').classList.remove('cm-meter-outside');$('cm-track').setAttribute('aria-valuenow','0');return;} $('sens-error').textContent='';const cm360=360/(f.yaw*s*dpi)*2.54;const target=360/(t.yaw*(cm360/2.54)*dpi2);$('res').textContent=fmt(target,t.yaw>=.05?3:4);$('cm').textContent=fmt(cm360,1);$('inch').textContent=fmt(cm360/2.54,1);$('cm-meter-title').textContent=T[lang].cmMeter;$('cm-meter-subtitle').textContent=T[lang].cmMeterSub;$('cm-meter-help').textContent=T[lang].cmMeterHelp;$('cm-meter-value').textContent=fmt(cm360,1)+' cm';const rulerPct=Math.min(100,Math.max(0,cm360));$('cm-fill').style.width=rulerPct+'%';$('cm-ruler-value').textContent=fmt(cm360,1)+' cm';$('cm-ruler-value').style.left=Math.min(96,Math.max(4,rulerPct))+'%';$('cm-meter').classList.toggle('cm-meter-outside',cm360>100);$('cm-track').setAttribute('aria-valuenow',String(rulerPct));$('target-edpi').textContent=fmt(target*dpi2,0);$('result-label').textContent=T[lang].result+' · '+t[lang];bump($('res'));}
+ function calcEdpi(){const s=Number($('edpi-sens').value),d=Number($('edpi-dpi').value);if(!(s>0&&d>0)){ $('edpi-error').textContent=T[lang].edpiError;$('edpi-result').textContent='–';return;} $('edpi-error').textContent='';$('edpi-result').textContent=fmt(s*d,2);}
+ function setTab(which){const sens=which==='sens';$('tab-sens').setAttribute('aria-selected',String(sens));$('tab-edpi').setAttribute('aria-selected',String(!sens));$('panel-sens').hidden=!sens;$('panel-edpi').hidden=sens;}
+ $('tab-sens').addEventListener('click',()=>setTab('sens'));$('tab-edpi').addEventListener('click',()=>setTab('edpi'));
+ ['from','to','sens','dpi','dpi2'].forEach(id=>{ $(id).addEventListener('input',calc);$(id).addEventListener('change',calc); });$('swap').addEventListener('click',()=>{const a=$('from').value;$('from').value=$('to').value;$('to').value=a;calc();});
+ ['edpi-sens','edpi-dpi','edpi-game'].forEach(id=>{ $(id).addEventListener('input',calcEdpi);$(id).addEventListener('change',calcEdpi); });
+ $('reset-sens').addEventListener('click',()=>{$('from').value='cs2';$('to').value='valorant';$('sens').value='1';$('dpi').value='800';$('dpi2').value='';calc();});$('reset-edpi').addEventListener('click',()=>{$('edpi-game').value='valorant';$('edpi-sens').value='1';$('edpi-dpi').value='800';calcEdpi();});
+ function copyText(text,button){if(!text||text==='–')return;const done=()=>{button.textContent=lang==='tr'?'Kopyalandı':'Copied';setTimeout(()=>button.textContent=T[lang].copy,1100);};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text.replace(',','.')).then(done).catch(()=>{});}
+ $('copy-sens').addEventListener('click',()=>copyText($('res').textContent,$('copy-sens')));$('copy-edpi').addEventListener('click',()=>copyText($('edpi-result').textContent,$('copy-edpi')));
+ function setTheme(theme){document.documentElement.dataset.theme=theme;$('theme-toggle').textContent=theme==='dark'?'☀':'☾';$('theme-toggle').setAttribute('aria-label',T[lang].theme);$('theme-toggle').title=T[lang].theme;document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#0c111b':'#f4f6fa';}
+ $('theme-toggle').addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+ function setLang(next){lang=next;const t=T[lang];document.documentElement.lang=lang;document.title=t.title;document.querySelector('meta[name="description"]').content=t.description;document.querySelector('meta[property="og:locale"]').content=lang==='en'?'en_US':'tr_TR';document.querySelector('meta[property="og:title"]').content=t.title;document.querySelector('meta[property="og:description"]').content=t.description;document.querySelector('meta[name="twitter:title"]').content=t.title;document.querySelector('meta[name="twitter:description"]').content=t.description;$('page-title').textContent=t.h1;$('lead').textContent=t.lead;$('tab-sens').textContent=t.tabSens;$('tab-edpi').textContent=t.tabEdpi;$('convert-label').textContent=t.convert;$('from-label').textContent=t.from;$('to-label').textContent=t.to;$('sens-label').textContent=t.sens;$('dpi-label').textContent=t.dpi;$('dpi2-label').textContent=t.dpi2;$('reset-label').textContent=t.reset;$('result-label').textContent=t.result;$('copy-sens').textContent=t.copy;$('inch-label').textContent=t.inch;$('result-note').textContent=t.note;$('cm-meter-title').textContent=t.cmMeter;$('cm-meter-subtitle').textContent=t.cmMeterSub;$('cm-meter-help').textContent=t.cmMeterHelp;$('edpi-section-label').textContent=t.edpiSection;$('edpi-game-label').textContent=t.game;$('edpi-sens-label').textContent=t.sens;$('edpi-dpi-label').textContent=t.dpi;$('edpi-result-label').textContent=t.edpiResult;$('copy-edpi').textContent=t.copy;$('edpi-info').textContent=t.edpiInfo;$('reset-edpi-label').textContent=t.reset;$('faq-title').textContent=t.faq;['faq1','faq1p','faq2','faq2p','faq3','faq3p','game-note','footer'].forEach(id=>{const key=id==='game-note'?'gameNote':id==='footer'?'footer':id;$(id).textContent=t[key];});$('swap').title=t.swap;$('swap').setAttribute('aria-label',t.swap);$('lang-tr').setAttribute('aria-pressed',String(lang==='tr'));$('lang-en').setAttribute('aria-pressed',String(lang==='en'));document.querySelectorAll('.game-picker-search').forEach(el=>el.placeholder=lang==='tr'?'Oyun ara…':'Search games…');const selections=[$('from').value,$('to').value,$('edpi-game').value];[['from',selections[0]],['to',selections[1]],['edpi-game',selections[2]]].forEach(([id,val])=>{const el=$(id);el.innerHTML='';fillGames(el);el.value=val;updatePickerLabel(el.id);renderPicker(el.id);});setTheme(document.documentElement.dataset.theme||'light');calc();calcEdpi();}
+ $('lang-tr').addEventListener('click',()=>setLang('tr'));$('lang-en').addEventListener('click',()=>setLang('en'));
+ setLang('tr');
 })();
 </script>
-
-<script>
-(function(){
-  var GAMES = {
-    valorant:{n:'Valorant', yaw:0.07},
-    cs2:{n:'CS2', yaw:0.022},
-    apex:{n:'Apex Legends', yaw:0.022},
-    ow2:{n:'Overwatch 2', yaw:0.0066}
-  };
-  var $ = function(id){return document.getElementById(id)};
-  var from=$('from'), to=$('to');
-  Object.keys(GAMES).forEach(function(k){
-    from.add(new Option(GAMES[k].n,k));
-    to.add(new Option(GAMES[k].n,k));
-  });
-  from.value='cs2'; to.value='valorant';
-
-  function fmt(x,d){
-    if(!isFinite(x)) return '–';
-    var s=x.toFixed(d);
-    return s.replace('.',',');
-  }
-  function calc(){
-    var f=GAMES[from.value], t=GAMES[to.value];
-    var sens=parseFloat($('sens').value), dpi=parseFloat($('dpi').value);
-    var dpi2=parseFloat($('dpi2').value); if(!(dpi2>0)) dpi2=dpi;
-    var err=$('err');
-    if(!(sens>0)||!(dpi>0)){
-      err.textContent=(window.aimoraLang==='en'?'Enter a number greater than 0 for sensitivity and DPI.':'Hassasiyet ve DPI için 0’dan büyük bir sayı gir.');
-      ['res','cm','inch','edpi'].forEach(function(i){$(i).textContent='–'});
-      $('fill').style.width='0'; return;
-    }
-    err.textContent='';
-    var in360 = 360/(f.yaw*sens*dpi);
-    var cm360 = in360*2.54;
-    var target = 360/(t.yaw*in360*dpi2);
-    var dec = t.yaw>=0.05 ? 3 : 4;
-    $('cap').textContent=(window.aimoraLang==='en'?'Sensitivity in '+t.n:t.n+' hassasiyetin');
-    $('res').textContent=fmt(target,dec);
-    $('cm').textContent=fmt(cm360,1);
-    $('inch').textContent=fmt(in360,1);
-    $('edpi').textContent=fmt(target*dpi2,0);
-    $('fill').style.width=Math.min(100,cm360)+'%';
-  }
-  ['from','to','sens','dpi','dpi2'].forEach(function(i){
-    $(i).addEventListener('input',calc);
-    $(i).addEventListener('change',calc);
-  });
-  $('swap').addEventListener('click',function(){
-    var a=from.value; from.value=to.value; to.value=a; calc();
-  });
-  window.aimoraRecalc=calc;
-  calc();
-})();
-</script>
-</body>
-</html>
+</body></html>
