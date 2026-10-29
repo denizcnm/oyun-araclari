@@ -3,9 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="google-site-verification" content="cYSUlXjNxDeptlfQOp68Krmrs6LMLz6gGrOu1tdb1Us" />
-<title>Valorant Hassasiyet Çevirici: CS2, Apex, Overwatch 2 ↔ Valorant</title>
-<meta name="description" content="Valorant hassasiyetini CS2, Apex Legends ve Overwatch 2 ile birebir eşleştir. cm/360, eDPI ve DPI değişimi hesabı, Türkçe.">
+<meta name="google-site-verification" content="cYSUlXjNxDeptlfQOp68Krmrs6LMLz6gGrOu1tdb1Us">
+<title>Valorant Hassasiyet Çevirici | Aimora</title>
+<meta name="description" content="Aimora ile Valorant hassasiyetini CS2, Apex Legends ve Overwatch 2 arasında çevir. DPI farkını hesapla, eDPI ve cm/360 değerlerini kolayca karşılaştır.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://aimora.aimora.workers.dev/">
+<meta name="theme-color" content="#edf0f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Aimora">
+<meta property="og:title" content="Valorant Hassasiyet Çevirici | Aimora">
+<meta property="og:description" content="Valorant, CS2, Apex Legends ve Overwatch 2 arasında hassasiyetini çevir. DPI, eDPI ve cm/360 değerlerini hesapla.">
+<meta property="og:url" content="https://aimora.aimora.workers.dev/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Valorant Hassasiyet Çevirici | Aimora">
+<meta name="twitter:description" content="Valorant, CS2, Apex Legends ve Overwatch 2 arasında hassasiyetini çevir. DPI, eDPI ve cm/360 değerlerini hesapla.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Aimora - Valorant Hassasiyet Çevirici",
+  "url": "https://aimora.aimora.workers.dev/",
+  "description": "Valorant, CS2, Apex Legends ve Overwatch 2 arasında oyun hassasiyeti, DPI, eDPI ve cm/360 hesaplama aracı.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "tr",
+  "browserRequirements": "JavaScript enabled"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
@@ -67,7 +92,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
 <main>
   <h1>Valorant hassasiyet çevirici</h1>
   <p class="lead">Başka bir oyundaki hassasiyetini Valorant’a (ya da tersine) aynı fare mesafesiyle çevir. Kas hafızan bozulmasın.</p>
- 
+
   <div class="card">
     <div class="row">
       <div><label for="from">Çevrilecek oyun</label>
@@ -87,7 +112,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
         <input id="dpi2" type="number" inputmode="numeric" step="any" min="0" placeholder="Aynı"></div>
     </div>
     <p class="err" id="err" role="alert"></p>
- 
+
     <div class="out" aria-live="polite">
       <p class="cap" id="cap">Hedef oyunda hassasiyetin</p>
       <p class="big" id="res">–</p>
@@ -103,7 +128,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
       </div>
     </div>
   </div>
- 
+
   <h2>Sık sorulanlar</h2>
   <details><summary>Bu çevirici nasıl çalışıyor?</summary>
     <p>Her oyunun bir dönüş katsayısı (yaw) var. Valorant’ta 0,07, CS2 ve Apex’te 0,022, Overwatch 2’de 0,0066. Fareyi bir inç kaydırdığında ekranın kaç derece döndüğü, bu katsayı × hassasiyet × DPI ile bulunur. Çevirici, 360° için gereken fare mesafesini iki oyunda da aynı tutar.</p></details>
@@ -113,10 +138,10 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
     <p>eDPI, DPI ile hassasiyetin çarpımıdır ama sadece aynı oyun içinde karşılaştırma için işe yarar. Farklı oyunları karşılaştırmak için cm/360 kullanılır.</p></details>
   <details><summary>Çevirdikten sonra hâlâ farklı geliyor</summary>
     <p>Çevirme mesafeyi eşitler, görüş açısı (FOV) ve nişan alma hissi oyunlar arasında farklıdır. Çevirdiğin değeri başlangıç noktası say, birkaç oyun sonra küçük ayar yapman normal.</p></details>
- 
+
   <footer>Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.</footer>
 </main>
- 
+
 <script>
 (function(){
   var GAMES = {
@@ -132,7 +157,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
     to.add(new Option(GAMES[k].n,k));
   });
   from.value='cs2'; to.value='valorant';
- 
+
   function fmt(x,d){
     if(!isFinite(x)) return '–';
     var s=x.toFixed(d);
@@ -172,4 +197,3 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
 </script>
 </body>
 </html>
- 
