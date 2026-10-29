@@ -85,11 +85,21 @@ details{border-top:1px solid var(--line);padding:12px 0}
 summary{cursor:pointer;font-weight:600}
 details p{color:var(--mute);margin:8px 0 0}
 footer{color:var(--mute);font-size:13px;margin-top:30px}
+.topbar{display:flex;justify-content:flex-end;margin-bottom:18px}
+.lang-switch{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.lang-switch button{border:0;background:transparent;color:var(--mute);font:inherit;font-size:13px;font-weight:700;padding:7px 12px;border-radius:7px;cursor:pointer}
+.lang-switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 @media (max-width:520px){.row{grid-template-columns:1fr}.swap{justify-self:start}.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
+  <div class="topbar">
+    <div class="lang-switch" role="group" aria-label="Language / Dil">
+      <button type="button" id="lang-tr" aria-pressed="true">TR</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
   <h1>Valorant hassasiyet çevirici</h1>
   <p class="lead">Başka bir oyundaki hassasiyetini Valorant’a (ya da tersine) aynı fare mesafesiyle çevir. Kas hafızan bozulmasın.</p>
 
@@ -144,6 +154,86 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
 
 <script>
 (function(){
+  var translations = {
+    tr: {
+      title:'Valorant Hassasiyet Çevirici | Aimora',
+      description:'Aimora ile Valorant hassasiyetini CS2, Apex Legends ve Overwatch 2 arasında çevir. DPI farkını hesapla, eDPI ve cm/360 değerlerini kolayca karşılaştır.',
+      h1:'Valorant hassasiyet çevirici',
+      lead:'Başka bir oyundaki hassasiyetini Valorant’a (ya da tersine) aynı fare mesafesiyle çevir. Kas hafızan bozulmasın.',
+      from:'Çevrilecek oyun', to:'Hedef oyun', swap:'Oyunları değiştir', sens:'Oyun içi hassasiyetin', dpi:'Fare DPI', dpi2:'Hedefte DPI (aynıysa boş bırak)', placeholder:'Aynı',
+      cap:'Hedef oyunda hassasiyetin', ruler:'Çubuk, 360° dönmek için fareyi kaç cm kaydırdığını gösterir.',
+      cm:'cm / 360°', inch:'inç / 360°', edpi:'eDPI (hedef)', faq:'Sık sorulanlar',
+      summaries:['Bu çevirici nasıl çalışıyor?','Valorant hassasiyeti CS2’ye nasıl çevrilir?','eDPI ve cm/360 farkı ne?','Çevirdikten sonra hâlâ farklı geliyor'],
+      answers:[
+        'Her oyunun bir dönüş katsayısı (yaw) var. Valorant’ta 0,07, CS2 ve Apex’te 0,022, Overwatch 2’de 0,0066. Fareyi bir inç kaydırdığında ekranın kaç derece döndüğü, bu katsayı × hassasiyet × DPI ile bulunur. Çevirici, 360° için gereken fare mesafesini iki oyunda da aynı tutar.',
+        'DPI aynıysa Valorant hassasiyetini yaklaşık 3,18 ile çarp. CS2’den Valorant’a çevirirken 0,314 ile çarp. Bu araç aynı hesabı DPI farkını da katarak yapar.',
+        'eDPI, DPI ile hassasiyetin çarpımıdır ama sadece aynı oyun içinde karşılaştırma için işe yarar. Farklı oyunları karşılaştırmak için cm/360 kullanılır.',
+        'Çevirme mesafeyi eşitler, görüş açısı (FOV) ve nişan alma hissi oyunlar arasında farklıdır. Çevirdiğin değeri başlangıç noktası say, birkaç oyun sonra küçük ayar yapman normal.'
+      ],
+      footer:'Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.',
+      error:'Hassasiyet ve DPI için 0’dan büyük bir sayı gir.'
+    },
+    en: {
+      title:'Valorant Sensitivity Converter | Aimora',
+      description:'Convert sensitivity between Valorant, CS2, Apex Legends and Overwatch 2 with Aimora. Account for DPI and compare eDPI and cm/360 values.',
+      h1:'Valorant Sensitivity Converter',
+      lead:'Convert your sensitivity between games while keeping the same mouse distance. Keep your muscle memory consistent.',
+      from:'Convert from', to:'Convert to', swap:'Swap games', sens:'In-game sensitivity', dpi:'Mouse DPI', dpi2:'Target DPI (leave blank if same)', placeholder:'Same',
+      cap:'Sensitivity in target game', ruler:'The bar shows how many centimeters you need to move your mouse for a 360° turn.',
+      cm:'cm / 360°', inch:'in / 360°', edpi:'Target eDPI', faq:'Frequently Asked Questions',
+      summaries:['How does this converter work?','How do I convert Valorant sensitivity to CS2?','What is the difference between eDPI and cm/360?','It still feels different after converting'],
+      answers:[
+        'Each game has a yaw (rotation) coefficient: 0.07 for Valorant, 0.022 for CS2 and Apex, and 0.0066 for Overwatch 2. The rotation in degrees per inch is calculated as coefficient × sensitivity × DPI. This converter keeps the mouse distance required for a 360° turn the same across both games.',
+        'If your DPI is the same, multiply Valorant sensitivity by approximately 3.18 to get CS2 sensitivity. To convert from CS2 to Valorant, multiply by 0.314. This tool also accounts for differences in DPI.',
+        'eDPI is DPI multiplied by sensitivity, and is mainly useful for comparing settings within the same game. Use cm/360 to compare sensitivity across different games.',
+        'The conversion matches physical mouse distance, but field of view (FOV) and aiming feel can differ between games. Treat the converted value as a starting point; making a small adjustment after a few matches is normal.'
+      ],
+      footer:'This is a fan-made page and is not affiliated with Riot Games, Valve, EA, or Blizzard.',
+      error:'Enter a number greater than 0 for sensitivity and DPI.'
+    }
+  };
+  function setLang(lang){
+    var t=translations[lang];
+    window.aimoraLang=lang;
+    document.documentElement.lang=lang;
+    document.title=t.title;
+    document.querySelector('meta[name="description"]').content=t.description;
+    document.querySelector('meta[property="og:locale"]').content=lang==='en'?'en_US':'tr_TR';
+    document.querySelector('meta[property="og:title"]').content=t.title;
+    document.querySelector('meta[property="og:description"]').content=t.description;
+    document.querySelector('meta[name="twitter:title"]').content=t.title;
+    document.querySelector('meta[name="twitter:description"]').content=t.description;
+    document.querySelector('h1').textContent=t.h1;
+    document.querySelector('.lead').textContent=t.lead;
+    document.querySelector('label[for="from"]').textContent=t.from;
+    document.querySelector('label[for="to"]').textContent=t.to;
+    document.querySelector('#swap').setAttribute('aria-label',t.swap);
+    document.querySelector('label[for="sens"]').textContent=t.sens;
+    document.querySelector('label[for="dpi"]').textContent=t.dpi;
+    document.querySelector('label[for="dpi2"]').textContent=t.dpi2;
+    document.querySelector('#dpi2').placeholder=t.placeholder;
+    document.querySelector('#cap').textContent=t.cap;
+    document.querySelector('.ruler + .cap').textContent=t.ruler;
+    var statLabels=document.querySelectorAll('.stat span');
+    [t.cm,t.inch,t.edpi].forEach(function(v,i){statLabels[i].textContent=v;});
+    document.querySelector('main > h2').textContent=t.faq;
+    var details=document.querySelectorAll('main > details');
+    details.forEach(function(d,i){d.querySelector('summary').textContent=t.summaries[i];d.querySelector('p').textContent=t.answers[i];});
+    document.querySelector('footer').textContent=t.footer;
+    document.getElementById('lang-tr').setAttribute('aria-pressed',lang==='tr'?'true':'false');
+    document.getElementById('lang-en').setAttribute('aria-pressed',lang==='en'?'true':'false');
+    var schema=document.querySelector('script[type="application/ld+json"]');
+    try { var data=JSON.parse(schema.textContent); data.name=lang==='en'?'Aimora - Valorant Sensitivity Converter':'Aimora - Valorant Hassasiyet Çevirici'; data.description=t.description; data.inLanguage=lang; schema.textContent=JSON.stringify(data); } catch(e){}
+    if(window.aimoraRecalc) window.aimoraRecalc();
+  }
+  document.getElementById('lang-tr').addEventListener('click',function(){setLang('tr');});
+  document.getElementById('lang-en').addEventListener('click',function(){setLang('en');});
+  setLang('tr');
+})();
+</script>
+
+<script>
+(function(){
   var GAMES = {
     valorant:{n:'Valorant', yaw:0.07},
     cs2:{n:'CS2', yaw:0.022},
@@ -169,7 +259,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
     var dpi2=parseFloat($('dpi2').value); if(!(dpi2>0)) dpi2=dpi;
     var err=$('err');
     if(!(sens>0)||!(dpi>0)){
-      err.textContent='Hassasiyet ve DPI için 0’dan büyük bir sayı gir.';
+      err.textContent=(window.aimoraLang==='en'?'Enter a number greater than 0 for sensitivity and DPI.':'Hassasiyet ve DPI için 0’dan büyük bir sayı gir.');
       ['res','cm','inch','edpi'].forEach(function(i){$(i).textContent='–'});
       $('fill').style.width='0'; return;
     }
@@ -178,7 +268,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
     var cm360 = in360*2.54;
     var target = 360/(t.yaw*in360*dpi2);
     var dec = t.yaw>=0.05 ? 3 : 4;
-    $('cap').textContent=t.n+' hassasiyetin';
+    $('cap').textContent=(window.aimoraLang==='en'?'Sensitivity in '+t.n:t.n+' hassasiyetin');
     $('res').textContent=fmt(target,dec);
     $('cm').textContent=fmt(cm360,1);
     $('inch').textContent=fmt(in360,1);
@@ -192,6 +282,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
   $('swap').addEventListener('click',function(){
     var a=from.value; from.value=to.value; to.value=a; calc();
   });
+  window.aimoraRecalc=calc;
   calc();
 })();
 </script>
