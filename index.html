@@ -4,27 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="google-site-verification" content="cYSUlXjNxDeptlfQOp68Krmrs6LMLz6gGrOu1tdb1Us">
-<title>Valorant Hassasiyet Çevirici | Aimora</title>
-<meta name="description" content="Aimora ile Valorant hassasiyetini CS2, Apex Legends ve Overwatch 2 arasında çevir. DPI farkını hesapla, eDPI ve cm/360 değerlerini kolayca karşılaştır.">
+<title>Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora</title>
+<meta name="description" content="Aimora ile desteklenen oyunlar arasında fare hassasiyetini dönüştür, DPI ve eDPI değerlerini hesapla.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://aimora.aimora.workers.dev/">
 <meta name="theme-color" content="#edf0f5">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="Aimora">
-<meta property="og:title" content="Valorant Hassasiyet Çevirici | Aimora">
-<meta property="og:description" content="Valorant, CS2, Apex Legends ve Overwatch 2 arasında hassasiyetini çevir. DPI, eDPI ve cm/360 değerlerini hesapla.">
+<meta property="og:title" content="Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora">
+<meta property="og:description" content="Desteklenen oyunlar arasında fare hassasiyetini dönüştür; DPI, eDPI ve cm/360 değerlerini hesapla.">
 <meta property="og:url" content="https://aimora.aimora.workers.dev/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valorant Hassasiyet Çevirici | Aimora">
-<meta name="twitter:description" content="Valorant, CS2, Apex Legends ve Overwatch 2 arasında hassasiyetini çevir. DPI, eDPI ve cm/360 değerlerini hesapla.">
+<meta name="twitter:title" content="Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora">
+<meta name="twitter:description" content="Desteklenen oyunlar arasında fare hassasiyetini dönüştür; DPI, eDPI ve cm/360 değerlerini hesapla.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Aimora - Valorant Hassasiyet Çevirici",
+  "name": "Aimora - Fare Hassasiyet Çevirici / Hesaplayıcı",
   "url": "https://aimora.aimora.workers.dev/",
-  "description": "Valorant, CS2, Apex Legends ve Overwatch 2 arasında oyun hassasiyeti, DPI, eDPI ve cm/360 hesaplama aracı.",
+  "description": "Desteklenen oyunlar arasında fare hassasiyeti dönüştürme ve eDPI hesaplama aracı.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "inLanguage": "tr",
@@ -44,7 +44,7 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
     color-scheme: dark;
     --bg:#0e141d; --card:#172131; --ink:#e8edf5; --mute:#9aa8bb; --line:#2a374b;
     --accent:#6d93ff; --accent-ink:#0e141d; --track:#223048; --ok:#4cd6a0;
@@ -85,22 +85,38 @@ details{border-top:1px solid var(--line);padding:12px 0}
 summary{cursor:pointer;font-weight:600}
 details p{color:var(--mute);margin:8px 0 0}
 footer{color:var(--mute);font-size:13px;margin-top:30px}
-.topbar{display:flex;justify-content:flex-end;margin-bottom:18px}
+.topbar{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.nav-tabs{display:flex;gap:8px;margin:0 0 24px;padding:5px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.nav-tabs button{flex:1;border:0;border-radius:8px;background:transparent;color:var(--mute);font:inherit;font-weight:700;padding:10px 12px;cursor:pointer}
+.nav-tabs button[aria-current="page"]{background:var(--accent);color:var(--accent-ink)}
+.tool-btn{border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:8px 10px;cursor:pointer}
+.label-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.label-row label{margin-bottom:6px}
+.reset-btn{padding:5px 8px;margin-bottom:6px}
+.edpi-view[hidden],.sensitivity-view[hidden]{display:none!important}
+.edpi-result{margin-top:18px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.edpi-number{font-family:"Archivo",system-ui,sans-serif;font-size:clamp(42px,10vw,64px);font-weight:800;line-height:1.1;color:var(--accent);margin:8px 0}
 .lang-switch{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .lang-switch button{border:0;background:transparent;color:var(--mute);font:inherit;font-size:13px;font-weight:700;padding:7px 12px;border-radius:7px;cursor:pointer}
 .lang-switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-@media (max-width:520px){.row{grid-template-columns:1fr}.swap{justify-self:start}.stats{grid-template-columns:1fr}}
+@media (max-width:520px){.row{grid-template-columns:1fr}.swap{justify-self:start}.stats{grid-template-columns:1fr}.topbar{justify-content:space-between}.nav-tabs button{font-size:14px;padding:9px 6px}}
 </style>
 </head>
 <body>
 <main>
   <div class="topbar">
+    <button type="button" class="tool-btn" id="theme-toggle" aria-pressed="false">🌙 Karanlık mod</button>
     <div class="lang-switch" role="group" aria-label="Language / Dil">
       <button type="button" id="lang-tr" aria-pressed="true">TR</button>
       <button type="button" id="lang-en" aria-pressed="false">EN</button>
     </div>
   </div>
-  <h1>Valorant hassasiyet çevirici</h1>
+  <nav class="nav-tabs" aria-label="Hesaplayıcılar">
+    <button type="button" id="tab-sensitivity" aria-current="page">Hassasiyet Hesaplayıcı</button>
+    <button type="button" id="tab-edpi" aria-current="false">eDPI Hesaplayıcı</button>
+  </nav>
+  <section id="sensitivity-view" class="sensitivity-view">
+  <h1>Fare Hassasiyet Çevirici / Hesaplayıcı</h1>
   <p class="lead">Başka bir oyundaki hassasiyetini Valorant’a (ya da tersine) aynı fare mesafesiyle çevir. Kas hafızan bozulmasın.</p>
 
   <div class="card">
@@ -118,7 +134,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
         <input id="dpi" type="number" inputmode="numeric" step="any" min="0" value="800"></div>
     </div>
     <div class="grid2">
-      <div><label for="dpi2">Hedefte DPI (aynıysa boş bırak)</label>
+      <div><div class="label-row"><label for="dpi2">Hedefte DPI (aynıysa boş bırak)</label><button type="button" id="reset-converter" class="tool-btn reset-btn">Sıfırla</button></div>
         <input id="dpi2" type="number" inputmode="numeric" step="any" min="0" placeholder="Aynı"></div>
     </div>
     <p class="err" id="err" role="alert"></p>
@@ -149,17 +165,35 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
   <details><summary>Çevirdikten sonra hâlâ farklı geliyor</summary>
     <p>Çevirme mesafeyi eşitler, görüş açısı (FOV) ve nişan alma hissi oyunlar arasında farklıdır. Çevirdiğin değeri başlangıç noktası say, birkaç oyun sonra küçük ayar yapman normal.</p></details>
 
-  <footer>Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.</footer>
+  <footer id="site-footer">Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.</footer>
+  </section>
+
+  <section id="edpi-view" class="edpi-view" hidden>
+    <h1 id="edpi-heading">eDPI Hesaplayıcı</h1>
+    <p class="lead" id="edpi-lead">DPI ve oyun içi hassasiyetini girerek eDPI değerini hesapla. eDPI, DPI × hassasiyet formülüyle hesaplanır.</p>
+    <div class="card">
+      <div class="grid2" style="margin-top:0">
+        <div><label for="edpi-dpi">Fare DPI</label><input id="edpi-dpi" type="number" inputmode="numeric" min="1" step="any" value="800"></div>
+        <div><label for="edpi-sens">Oyun içi hassasiyet</label><input id="edpi-sens" type="number" inputmode="decimal" min="0" step="any" value="1"></div>
+      </div>
+      <p class="err" id="edpi-error" role="alert"></p>
+      <div class="edpi-result" aria-live="polite">
+        <p class="cap" id="edpi-result-label">Hesaplanan eDPI</p>
+        <p class="edpi-number" id="edpi-result">800</p>
+        <p class="cap" id="edpi-formula">eDPI = DPI × hassasiyet</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script>
 (function(){
   var translations = {
     tr: {
-      title:'Valorant Hassasiyet Çevirici | Aimora',
-      description:'Aimora ile Valorant hassasiyetini CS2, Apex Legends ve Overwatch 2 arasında çevir. DPI farkını hesapla, eDPI ve cm/360 değerlerini kolayca karşılaştır.',
-      h1:'Valorant hassasiyet çevirici',
-      lead:'Başka bir oyundaki hassasiyetini Valorant’a (ya da tersine) aynı fare mesafesiyle çevir. Kas hafızan bozulmasın.',
+      title:'Fare Hassasiyet Çevirici / Hesaplayıcı | Aimora',
+      description:'Aimora ile desteklenen oyunlar arasında fare hassasiyetini dönüştür, DPI ve eDPI değerlerini hesapla.',
+      h1:'Fare Hassasiyet Çevirici / Hesaplayıcı',
+      lead:'Desteklenen oyunlar arasında hassasiyetini aynı fare mesafesini koruyarak dönüştür. DPI, eDPI ve cm/360 değerlerini hesapla.',
       from:'Çevrilecek oyun', to:'Hedef oyun', swap:'Oyunları değiştir', sens:'Oyun içi hassasiyetin', dpi:'Fare DPI', dpi2:'Hedefte DPI (aynıysa boş bırak)', placeholder:'Aynı',
       cap:'Hedef oyunda hassasiyetin', ruler:'Çubuk, 360° dönmek için fareyi kaç cm kaydırdığını gösterir.',
       cm:'cm / 360°', inch:'inç / 360°', edpi:'eDPI (hedef)', faq:'Sık sorulanlar',
@@ -171,13 +205,13 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
         'Çevirme mesafeyi eşitler, görüş açısı (FOV) ve nişan alma hissi oyunlar arasında farklıdır. Çevirdiğin değeri başlangıç noktası say, birkaç oyun sonra küçük ayar yapman normal.'
       ],
       footer:'Bu sayfa hayran yapımıdır, Riot Games, Valve, EA veya Blizzard ile bağlantısı yoktur.',
-      error:'Hassasiyet ve DPI için 0’dan büyük bir sayı gir.'
+      error:'Hassasiyet ve DPI için 0’dan büyük bir sayı gir.', navSens:'Hassasiyet Hesaplayıcı', navEdpi:'eDPI Hesaplayıcı', reset:'Sıfırla', dark:'Karanlık mod', light:'Aydınlık mod', edpiHeading:'eDPI Hesaplayıcı', edpiLead:'DPI ve oyun içi hassasiyetini girerek eDPI değerini hesapla. eDPI, DPI × hassasiyet formülüyle hesaplanır.', edpiSens:'Oyun içi hassasiyet', edpiResultLabel:'Hesaplanan eDPI', edpiFormula:'eDPI = DPI × hassasiyet', edpiError:'DPI ve hassasiyet için 0’dan büyük bir sayı gir.'
     },
     en: {
-      title:'Valorant Sensitivity Converter | Aimora',
-      description:'Convert sensitivity between Valorant, CS2, Apex Legends and Overwatch 2 with Aimora. Account for DPI and compare eDPI and cm/360 values.',
-      h1:'Valorant Sensitivity Converter',
-      lead:'Convert your sensitivity between games while keeping the same mouse distance. Keep your muscle memory consistent.',
+      title:'Mouse Sensitivity Converter / Calculator | Aimora',
+      description:'Convert mouse sensitivity between supported games and calculate DPI, eDPI, and cm/360 with Aimora.',
+      h1:'Mouse Sensitivity Converter / Calculator',
+      lead:'Convert sensitivity between supported games while keeping mouse distance consistent. Calculate DPI, eDPI, and cm/360 values.',
       from:'Convert from', to:'Convert to', swap:'Swap games', sens:'In-game sensitivity', dpi:'Mouse DPI', dpi2:'Target DPI (leave blank if same)', placeholder:'Same',
       cap:'Sensitivity in target game', ruler:'The bar shows how many centimeters you need to move your mouse for a 360° turn.',
       cm:'cm / 360°', inch:'in / 360°', edpi:'Target eDPI', faq:'Frequently Asked Questions',
@@ -189,7 +223,7 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
         'The conversion matches physical mouse distance, but field of view (FOV) and aiming feel can differ between games. Treat the converted value as a starting point; making a small adjustment after a few matches is normal.'
       ],
       footer:'This is a fan-made page and is not affiliated with Riot Games, Valve, EA, or Blizzard.',
-      error:'Enter a number greater than 0 for sensitivity and DPI.'
+      error:'Enter a number greater than 0 for sensitivity and DPI.', navSens:'Sensitivity Calculator', navEdpi:'eDPI Calculator', reset:'Reset', dark:'Dark mode', light:'Light mode', edpiHeading:'eDPI Calculator', edpiLead:'Enter your DPI and in-game sensitivity to calculate eDPI. eDPI is calculated as DPI × sensitivity.', edpiSens:'In-game sensitivity', edpiResultLabel:'Calculated eDPI', edpiFormula:'eDPI = DPI × sensitivity', edpiError:'Enter values greater than 0 for DPI and sensitivity.'
     }
   };
   function setLang(lang){
@@ -203,8 +237,17 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
     document.querySelector('meta[property="og:description"]').content=t.description;
     document.querySelector('meta[name="twitter:title"]').content=t.title;
     document.querySelector('meta[name="twitter:description"]').content=t.description;
-    document.querySelector('h1').textContent=t.h1;
-    document.querySelector('.lead').textContent=t.lead;
+    document.querySelector('#sensitivity-view h1').textContent=t.h1;
+    document.querySelector('#sensitivity-view .lead').textContent=t.lead;
+    document.getElementById('tab-sensitivity').textContent=t.navSens;
+    document.getElementById('tab-edpi').textContent=t.navEdpi;
+    document.getElementById('reset-converter').textContent=t.reset;
+    document.getElementById('edpi-heading').textContent=t.edpiHeading;
+    document.getElementById('edpi-lead').textContent=t.edpiLead;
+    document.querySelector('label[for="edpi-sens"]').textContent=t.edpiSens;
+    document.getElementById('edpi-result-label').textContent=t.edpiResultLabel;
+    document.getElementById('edpi-formula').textContent=t.edpiFormula;
+    document.getElementById('theme-toggle').textContent=(document.documentElement.dataset.theme==='dark'?'☀️ ':'🌙 ')+(document.documentElement.dataset.theme==='dark'?t.light:t.dark);
     document.querySelector('label[for="from"]').textContent=t.from;
     document.querySelector('label[for="to"]').textContent=t.to;
     document.querySelector('#swap').setAttribute('aria-label',t.swap);
@@ -223,11 +266,36 @@ footer{color:var(--mute);font-size:13px;margin-top:30px}
     document.getElementById('lang-tr').setAttribute('aria-pressed',lang==='tr'?'true':'false');
     document.getElementById('lang-en').setAttribute('aria-pressed',lang==='en'?'true':'false');
     var schema=document.querySelector('script[type="application/ld+json"]');
-    try { var data=JSON.parse(schema.textContent); data.name=lang==='en'?'Aimora - Valorant Sensitivity Converter':'Aimora - Valorant Hassasiyet Çevirici'; data.description=t.description; data.inLanguage=lang; schema.textContent=JSON.stringify(data); } catch(e){}
+    try { var data=JSON.parse(schema.textContent); data.name=lang==='en'?'Aimora - Mouse Sensitivity Converter / Calculator':'Aimora - Fare Hassasiyet Çevirici / Hesaplayıcı'; data.description=t.description; data.inLanguage=lang; schema.textContent=JSON.stringify(data); } catch(e){}
     if(window.aimoraRecalc) window.aimoraRecalc();
   }
   document.getElementById('lang-tr').addEventListener('click',function(){setLang('tr');});
   document.getElementById('lang-en').addEventListener('click',function(){setLang('en');});
+  document.getElementById('tab-sensitivity').addEventListener('click',function(){
+    document.getElementById('sensitivity-view').hidden=false; document.getElementById('edpi-view').hidden=true;
+    document.getElementById('tab-sensitivity').setAttribute('aria-current','page'); document.getElementById('tab-edpi').setAttribute('aria-current','false');
+  });
+  document.getElementById('tab-edpi').addEventListener('click',function(){
+    document.getElementById('sensitivity-view').hidden=true; document.getElementById('edpi-view').hidden=false;
+    document.getElementById('tab-sensitivity').setAttribute('aria-current','false'); document.getElementById('tab-edpi').setAttribute('aria-current','page'); calcEdpi();
+  });
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var dark=document.documentElement.dataset.theme!=='dark'; document.documentElement.dataset.theme=dark?'dark':'light';
+    this.setAttribute('aria-pressed',dark?'true':'false'); setLang(window.aimoraLang||'tr');
+    document.querySelector('meta[name="theme-color"]').content=dark?'#0e141d':'#edf0f5';
+  });
+  document.getElementById('reset-converter').addEventListener('click',function(){
+    document.getElementById('from').value='cs2'; document.getElementById('to').value='valorant'; document.getElementById('sens').value='1'; document.getElementById('dpi').value='800'; document.getElementById('dpi2').value=''; if(window.aimoraRecalc) window.aimoraRecalc();
+  });
+  function calcEdpi(){
+    var dpi=parseFloat(document.getElementById('edpi-dpi').value), sens=parseFloat(document.getElementById('edpi-sens').value);
+    var err=document.getElementById('edpi-error');
+    if(!(dpi>0)||!(sens>0)){err.textContent=translations[window.aimoraLang||'tr'].edpiError;document.getElementById('edpi-result').textContent='–';return;}
+    err.textContent=''; document.getElementById('edpi-result').textContent=(dpi*sens).toLocaleString(window.aimoraLang==='en'?'en-US':'tr-TR',{maximumFractionDigits:2});
+  }
+  document.getElementById('edpi-dpi').addEventListener('input',calcEdpi);
+  document.getElementById('edpi-sens').addEventListener('input',calcEdpi);
+  window.aimoraSetLang=setLang;
   setLang('tr');
 })();
 </script>
