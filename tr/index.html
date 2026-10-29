@@ -96,6 +96,14 @@ footer{padding-top:8px;font-size:12px}
  .saved-settings{padding:15px}
 }
 
+
+/* Ensure the saved-settings panel remains visible on every language route */
+#saved-settings{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;width:100%!important;min-height:120px!important;overflow:visible!important;z-index:1}
+#saved-settings .saved-settings-copy,#saved-settings .saved-settings-actions,#saved-settings .saved-settings-status{display:block;visibility:visible;opacity:1}
+#saved-settings .saved-settings-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#saved-settings .saved-settings-actions button{visibility:visible;opacity:1}
+@media(max-width:560px){#saved-settings .saved-settings-actions{display:grid;grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -112,7 +120,7 @@ footer{padding-top:8px;font-size:12px}
 <div class="result"><div><div class="result-label" id="result-label">Hedef hassasiyet</div><div class="result-value" id="res" aria-live="polite">–</div></div><div class="result-side"><button class="copy-btn" id="copy-sens" type="button">Kopyala</button></div></div>
 <div class="stats"><div class="stat"><strong id="cm">–</strong><span>cm / 360°</span></div><div class="stat"><strong id="inch">–</strong><span id="inch-label">inç / 360°</span></div><div class="stat"><strong id="target-edpi">–</strong><span>eDPI</span></div></div><div class="cm-meter" id="cm-meter" aria-live="polite"><div class="cm-meter-head"><div class="cm-meter-title-wrap"><span class="cm-meter-icon" aria-hidden="true">↻</span><div><div class="cm-meter-title" id="cm-meter-title">360° dönüş için gereken mesafe</div><div class="cm-meter-subtitle" id="cm-meter-subtitle">Fareyi tam tur döndürmek için kaydıracağın mesafe</div></div></div><strong class="cm-meter-value" id="cm-meter-value">– cm</strong></div><div class="cm-ruler"><span class="cm-ruler-value" id="cm-ruler-value">– cm</span><div class="cm-track" role="progressbar" aria-label="360 derece dönüş mesafesi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cm-track"><div class="cm-fill" id="cm-fill"></div></div></div><div class="cm-scale" aria-hidden="true"><span>0 cm</span><span>25 cm</span><span>50 cm</span><span>75 cm</span><span>100 cm</span></div><div class="cm-meter-foot"><span class="cm-meter-foot-icon" aria-hidden="true">ⓘ</span><span id="cm-meter-help">İşaret, hesaplanan mesafeyi cetvel üzerinde gösterir. 100 cm üzerindeki değerler ölçekte sınırda gösterilir.</span></div></div><p class="result-note" id="result-note">Hesaplama 360° dönüş mesafesini eşleştirmeyi hedefler. FOV ve nişan hissi farklılık gösterebilir.</p>
 </section>
-<section class="saved-settings" id="saved-settings" aria-labelledby="saved-settings-title">
+<section class="saved-settings" id="saved-settings" aria-labelledby="saved-settings-title" style="display:block;visibility:visible;opacity:1;width:100%;min-height:120px;">
   <div class="saved-settings-copy"><h2 id="saved-settings-title">Ayarlarını kaydet</h2><p id="saved-settings-desc">Bu cihazda kayıtlı tut; hesap açman gerekmez.</p></div>
   <div class="saved-settings-actions"><button class="copy-btn" id="save-settings" type="button">Mevcut ayarları kaydet</button><button class="reset" id="load-settings" type="button">Kayıtlı ayarı yükle</button><button class="reset" id="delete-settings" type="button">Kaydı sil</button></div>
   <p class="saved-settings-status" id="saved-settings-status" role="status" aria-live="polite">Ayarlar yalnızca bu tarayıcıda saklanır.</p>
