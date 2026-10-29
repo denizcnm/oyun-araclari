@@ -104,6 +104,21 @@ footer{padding-top:8px;font-size:12px}
 #saved-settings .saved-settings-actions button{visibility:visible;opacity:1}
 @media(max-width:560px){#saved-settings .saved-settings-actions{display:grid;grid-template-columns:1fr}}
 
+
+/* Aimora: clearer, roomier calculator fields and results */
+.edpi-layout{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#panel-edpi .field{padding:14px;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--card) 78%,var(--accent-soft));}
+#panel-edpi .field label{font-size:13px;margin-bottom:9px;color:var(--ink)}
+#panel-edpi .field input,#panel-edpi .field select,#panel-sens .field input,#panel-sens .game-picker-trigger{height:48px;font-size:15px;border-radius:10px;padding:10px 12px}
+#panel-edpi .edpi-result .result{padding:22px 24px;border-width:2px;border-radius:15px;min-height:112px}
+#panel-edpi .edpi-result .result-value{font-size:clamp(34px,5vw,44px)}
+#panel-edpi #reset-edpi{margin-top:14px;min-height:42px}
+#panel-sens .game-grid .field{padding:14px;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--card) 78%,var(--accent-soft))}
+#panel-sens .game-grid .field label{font-size:13px;margin-bottom:9px;color:var(--ink)}
+.saved-settings{margin-top:20px;padding:20px;border-radius:15px;border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.saved-settings-copy h2{font-size:17px}
+@media(max-width:700px){.edpi-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#panel-edpi .field{padding:11px}}
+@media(max-width:560px){.edpi-layout{grid-template-columns:1fr}.edpi-result .result{padding:17px}.saved-settings{padding:15px}#panel-sens .game-grid .field{padding:9px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hassasiyet çevirici nasıl çalışır?","acceptedAnswer":{"@type":"Answer","text":"Her oyunun dönüş katsayısı farklıdır. Bu araç, 360 derece dönüş için gereken fare mesafesini eşleştirmeye çalışır."}},{"@type":"Question","name":"eDPI nedir?","acceptedAnswer":{"@type":"Answer","text":"eDPI, oyun içi hassasiyet ile DPI değerinin çarpımıdır. En doğru şekilde aynı oyundaki ayarları karşılaştırmak için kullanılır."}},{"@type":"Question","name":"Çevirdiğim hassasiyet neden farklı hissediliyor?","acceptedAnswer":{"@type":"Answer","text":"FOV, en-boy oranı, animasyonlar ve oyunların giriş sistemleri nişan hissini değiştirebilir. Sonucu başlangıç noktası olarak kullanıp oyunda deneyin."}}]}</script>
 </head>
@@ -125,6 +140,7 @@ footer{padding-top:8px;font-size:12px}
 <p class="section-label" id="edpi-section-label">eDPI HESAPLA</p><div class="edpi-layout"><div class="field"><label id="edpi-game-label" for="edpi-game">Oyun</label><select id="edpi-game"></select></div><div class="field"><label id="edpi-sens-label" for="edpi-sens">Oyun içi hassasiyet</label><input id="edpi-sens" type="number" min="0" step="any" inputmode="decimal" value="1"></div><div class="field"><label id="edpi-dpi-label" for="edpi-dpi">Fare DPI</label><input id="edpi-dpi" type="number" min="1" step="1" inputmode="numeric" value="800"></div></div>
 <div class="edpi-result"><div class="result"><div><div class="result-label" id="edpi-result-label">Hesaplanan eDPI</div><div class="result-value" id="edpi-result" aria-live="polite">800</div></div><div class="result-side"><button class="copy-btn" id="copy-edpi" type="button">Kopyala</button></div></div></div><p class="error" id="edpi-error" role="alert"></p><p class="info" id="edpi-info">eDPI = oyun içi hassasiyet × DPI. eDPI en doğru şekilde aynı oyundaki ayarları karşılaştırmak için kullanılır.</p><button class="reset" id="reset-edpi" type="button">↺ <span id="reset-edpi-label">Sıfırla</span></button>
 </section>
+
 
 <section class="saved-settings" id="saved-settings" aria-labelledby="saved-settings-title" style="display:block;visibility:visible;opacity:1;width:100%;min-height:120px;">
   <div class="saved-settings-copy"><h2 id="saved-settings-title">Ayarlarını kaydet</h2><p id="saved-settings-desc">Bu cihazda kayıtlı tut; hesap açman gerekmez.</p></div>
