@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 112" role="img" aria-labelledby="title">
+<title id="title">Aimora</title>
+<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8B9CFF"/><stop offset="1" stop-color="#6678F5"/></linearGradient></defs>
+<g transform="translate(8 6)" fill="none" stroke="url(#a)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M31 28a43 43 0 0 1 78 0M31 78a43 43 0 0 0 78 0" stroke-dasharray="43 18"/>
+<path d="M70 4v13M70 91v13M8 52h14M118 52h14"/>
+<path d="M29 79 70 22l41 57H91L70 49 49 79Z" fill="url(#a)" stroke="none"/>
+<path d="m57 79 13-18 13 18" stroke="#0C111B" stroke-width="6"/>
+</g>
+<text x="160" y="79" fill="#EDF3FC" font-family="Inter,Arial,sans-serif" font-size="62" font-weight="750" letter-spacing="8">AIMORA</text>
+</svg>
